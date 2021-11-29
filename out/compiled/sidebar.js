@@ -20,6 +20,9 @@ var app = (function () {
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
+    function append(target, node) {
+        target.appendChild(node);
+    }
     function insert(target, node, anchor) {
         target.insertBefore(node, anchor || null);
     }
@@ -35,6 +38,10 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -43,6 +50,9 @@ var app = (function () {
     }
     function children(element) {
         return Array.from(element.childNodes);
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
     }
 
     let current_component;
@@ -250,41 +260,119 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let div5;
+    	let div4;
+    	let div0;
+    	let t1;
+    	let div3;
+    	let form;
+    	let div2;
+    	let input;
+    	let t2;
+    	let div1;
     	let t4;
     	let div6;
+    	let mounted;
+    	let dispose;
 
     	return {
     		c() {
     			div5 = element("div");
-
-    			div5.innerHTML = `<div class="card bg-dark svelte-13lphnp"><div class="card-header svelte-13lphnp">Search Phaser API Documentation</div> 
-        <div class="card-body svelte-13lphnp"><div class="input-group mb-3 svelte-13lphnp"><input type="text" class="form-control bg-dark text-white svelte-13lphnp" placeholder="Search Docs..."/> 
-                <div class="input-group-append svelte-13lphnp"><button type="button" class="btn btn-outline-light btn-dark svelte-13lphnp">Search</button></div></div></div></div>`;
-
+    			div4 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "Search Phaser API Documentation";
+    			t1 = space();
+    			div3 = element("div");
+    			form = element("form");
+    			div2 = element("div");
+    			input = element("input");
+    			t2 = space();
+    			div1 = element("div");
+    			div1.innerHTML = `<span class="svelte-13wwykn"><button type="button" class="btn btn-outline-light btn-dark svelte-13wwykn">Search</button></span>`;
     			t4 = space();
     			div6 = element("div");
-    			attr(div5, "class", "container text-white svelte-13lphnp");
-    			attr(div6, "class", "container svelte-13lphnp");
+    			attr(div0, "class", "card-header svelte-13wwykn");
+    			attr(input, "type", "text");
+    			attr(input, "class", "form-control bg-dark text-white svelte-13wwykn");
+    			attr(input, "placeholder", "Search Docs...");
+    			attr(div1, "class", "input-group-append svelte-13wwykn");
+    			attr(div2, "class", "input-group mb-3 svelte-13wwykn");
+    			attr(form, "class", "form-inline svelte-13wwykn");
+    			attr(div3, "class", "card-body svelte-13wwykn");
+    			attr(div4, "class", "card bg-dark svelte-13wwykn");
+    			attr(div5, "class", "container text-white svelte-13wwykn");
+    			attr(div6, "class", "container svelte-13wwykn");
     			attr(div6, "id", "results");
     		},
     		m(target, anchor) {
     			insert(target, div5, anchor);
+    			append(div5, div4);
+    			append(div4, div0);
+    			append(div4, t1);
+    			append(div4, div3);
+    			append(div3, form);
+    			append(form, div2);
+    			append(div2, input);
+    			set_input_value(input, /*searchVal*/ ctx[0]);
+    			append(div2, t2);
+    			append(div2, div1);
     			insert(target, t4, anchor);
     			insert(target, div6, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen(input, "input", /*input_input_handler*/ ctx[1]),
+    					listen(input, "input", handleInput),
+    					listen(form, "submit", submit_handler)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: noop,
+    		p(ctx, [dirty]) {
+    			if (dirty & /*searchVal*/ 1 && input.value !== /*searchVal*/ ctx[0]) {
+    				set_input_value(input, /*searchVal*/ ctx[0]);
+    			}
+    		},
     		i: noop,
     		o: noop,
     		d(detaching) {
     			if (detaching) detach(div5);
     			if (detaching) detach(t4);
     			if (detaching) detach(div6);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
     }
 
-    function instance($$self) {
-    	return [];
+    // When searchVal changes then perform a get request to the phaser api
+    function handleInput(e) {
+    	let getRequest = async function (searchKey) {
+    		const response = await fetch("https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2");
+    		const body = await response.text();
+    		return body;
+    	};
+
+    	console.log(e.target.value);
+
+    	Promise.resolve(getRequest(String(e.target.value))).then(function (value) {
+    		console.log(JSON.parse(value));
+    	});
+    }
+
+    const submit_handler = e => {
+    	e.preventDefault();
+    };
+
+    function instance($$self, $$props, $$invalidate) {
+    	let searchVal = "";
+
+    	function input_input_handler() {
+    		searchVal = this.value;
+    		$$invalidate(0, searchVal);
+    	}
+
+    	return [searchVal, input_input_handler];
     }
 
     class Sidebar extends SvelteComponent {

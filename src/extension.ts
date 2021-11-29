@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import fetch from 'node-fetch';
 import { PhaserPanel } from './PhaserPanel';
 import { SidebarProvider } from './Sidebar';
 

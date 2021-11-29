@@ -21,6 +21,7 @@ export default fs
         format: "iife",
         name: "app",
         file: "out/compiled/" + name + ".js",
+        inlineDynamicImports : true
       },
       plugins: [
         svelte({
