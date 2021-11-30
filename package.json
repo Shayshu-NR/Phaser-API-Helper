@@ -51,7 +51,7 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "webpack --watch --config ./build/node-extension.webpack.config.js",
+		"compile": "rollup -c -w && webpack --watch --config ./build/node-extension.webpack.config.js",
 		"watch": "concurrently \"rollup -c -w\" \"webpack --watch --config ./build/node-extension.webpack.config.js\"",
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",

@@ -1,10 +1,62 @@
 <script lang="ts">
+  import { SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG } from 'constants';
+import Hidden from './Hidden.svelte';
+
   let searchVal = "";
-  let searchResults = null;
+  let searchResults: {
+    data : {
+      //namespaces
+      longname: string,
+      memberof: string,
+      metafilename: string,
+      metalineno: string,
+      name: string,  
+
+      //classes
+      description: string,
+      metapath: string,
+      since: string,
+      wengl: string,
+
+      //members
+      access: string,
+      defaultValue: string,
+      inherited: string,
+      inherits: string,
+      nullable: string,
+      overrides: string,
+      readOnly: string,
+      scope: string,
+      type: string,
+
+      //function
+      fires: string,
+      listens: string,
+      returns: string,
+      returnsdescription: string,
+      returnstype: string,
+      signature: string,
+
+      //events
+      //constants
+      //typedef
+    }[], 
+    type: string
+  }[] = [];
+  let searchDropDown: HTMLDivElement;
+  let searchValSelected: boolean = false;
 
   // When searchVal changes then perform a get request to the phaser api
+  function handleInput(e) 
+  {
+    if(e.target.value.length == 0) {
+      searchValSelected = false;
+      return;
+    }
+    else {
+      searchValSelected = true;
+    }
 
-  function handleInput(e) {
     let getRequest = async function(searchKey: string): Promise<any> {
         const response = await fetch("https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2");
         const body = await response.text();
@@ -13,18 +65,18 @@
 
       console.log(e.target.value);
       Promise.resolve(getRequest(String(e.target.value))).then(function(value) {
-          console.log(JSON.parse(value));
+        searchResults = JSON.parse(value);
+        console.log(searchResults)
       });
+  }
+
+  function handleLinkClick(e) 
+  {
+    console.log(e);
   }
 </script>
 
 <style>
-    /*!
-   * Bootstrap v4.4.1 (https://getbootstrap.com/)
-   * Copyright 2011-2019 The Bootstrap Authors
-   * Copyright 2011-2019 Twitter, Inc.
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   */
     :root {
       --blue: #007bff;
       --indigo: #6610f2;
@@ -3678,7 +3730,7 @@
       top: 100%;
       left: 0;
       z-index: 1000;
-      display: none;
+      /*display: none;*/
       float: left;
       min-width: 10rem;
       padding: 0.5rem 0;
@@ -3691,6 +3743,11 @@
       background-clip: padding-box;
       border: 1px solid rgba(0, 0, 0, 0.15);
       border-radius: 0.25rem;
+    }
+
+    .dropdown-menu > a:hover {
+      background-image: none;
+      background-color: none;
     }
   
     .dropdown-menu-left {
@@ -3869,7 +3926,7 @@
     .dropdown-item:hover {
       color: #16181b;
       text-decoration: none;
-      background-color: #f8f9fa;
+      background-color: #f8f9fa57;
     }
   
     .dropdown-item.active,
@@ -11503,11 +11560,9 @@
     }
   
     /*# sourceMappingURL=bootstrap.min.css.map */
-  </style>
-  
+</style>
 
-
-  <div class="container text-white">
+<div class="container text-white">
   <div class="card bg-dark">
     <div class="card-header">Search Phaser API Documentation</div>
     <div class="card-body">
@@ -11515,28 +11570,36 @@
         on:submit={(e) => {
           e.preventDefault();
         }}
-        class="form-inline"
-      >
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control bg-dark text-white"
-            placeholder="Search Docs..."
-            bind:value={searchVal}
-            on:input={handleInput}
-          />
-          <div class="input-group-append">
-            <span>
-              <button type="button" class="btn btn-outline-light btn-dark"
-                >Search</button
-              >
-            </span>
+        class="form-inline">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control bg-dark text-white"
+              placeholder="Search Docs..."
+              bind:value={searchVal}
+              on:input={handleInput}
+            />
+            {#if searchResults.length > 0}
+              <div class="dropdown-menu bg-secondary" id="autocomplete" bind:this={searchDropDown}>
+                {#each searchResults as resType}
+                  {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+                    <a class="dropdown-item text-white" href="#" on:click={handleLinkClick}>{resType.data[i].name}</a>
+                  {/each}
+                  <div class="drowdown-divider"></div>
+                {/each}
+              </div>
+            {/if}
+            <div class="input-group-append">
+              <span>
+                <button type="button" class="btn btn-outline-light btn-dark">Search</button>
+              </span>
+            </div>
           </div>
-        </div>
       </form>
     </div>
   </div>
 </div>
 
 <div class="container" id="results" />
+
 
