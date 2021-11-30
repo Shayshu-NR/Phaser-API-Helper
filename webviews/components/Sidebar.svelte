@@ -11579,13 +11579,14 @@ import Hidden from './Hidden.svelte';
               bind:value={searchVal}
               on:input={handleInput}
             />
-            {#if searchResults.length > 0}
+            {#if searchResults.length > 0 && searchVal.length > 0}
               <div class="dropdown-menu bg-secondary" id="autocomplete" bind:this={searchDropDown}>
                 {#each searchResults as resType}
+                <h6 class="dropdown-header text-white">{resType.type.charAt(0).toUpperCase() + resType.type.slice(1)}</h6>
                   {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
                     <a class="dropdown-item text-white" href="#" on:click={handleLinkClick}>{resType.data[i].name}</a>
                   {/each}
-                  <div class="drowdown-divider"></div>
+                  <div class="dropdown-divider"></div>
                 {/each}
               </div>
             {/if}

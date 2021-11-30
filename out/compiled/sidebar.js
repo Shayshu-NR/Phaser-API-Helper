@@ -282,7 +282,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (11535:12) {#if searchResults.length > 0}
+    // (11535:12) {#if searchResults.length > 0 && searchVal.length > 0}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -344,7 +344,7 @@ var app = (function () {
     	};
     }
 
-    // (11538:18) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (11539:18) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
     	let t_value = /*resType*/ ctx[7].data[/*i*/ ctx[12]].name + "";
@@ -381,7 +381,11 @@ var app = (function () {
 
     // (11537:16) {#each searchResults as resType}
     function create_each_block(ctx) {
-    	let t;
+    	let h6;
+    	let t0_value = /*resType*/ ctx[7].type.charAt(0).toUpperCase() + /*resType*/ ctx[7].type.slice(1) + "";
+    	let t0;
+    	let t1;
+    	let t2;
     	let div;
 
     	let each_value_1 = Array(/*resType*/ ctx[7].data.length > 3
@@ -396,23 +400,34 @@ var app = (function () {
 
     	return {
     		c() {
+    			h6 = element("h6");
+    			t0 = text(t0_value);
+    			t1 = space();
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t = space();
+    			t2 = space();
     			div = element("div");
-    			attr(div, "class", "drowdown-divider svelte-w9uy93");
+    			attr(h6, "class", "dropdown-header text-white svelte-w9uy93");
+    			attr(div, "class", "dropdown-divider svelte-w9uy93");
     		},
     		m(target, anchor) {
+    			insert(target, h6, anchor);
+    			append(h6, t0);
+    			insert(target, t1, anchor);
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(target, anchor);
     			}
 
-    			insert(target, t, anchor);
+    			insert(target, t2, anchor);
     			insert(target, div, anchor);
     		},
     		p(ctx, dirty) {
+    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[7].type.charAt(0).toUpperCase() + /*resType*/ ctx[7].type.slice(1) + "")) set_data(t0, t0_value);
+
     			if (dirty & /*handleLinkClick, searchResults*/ 2) {
     				each_value_1 = Array(/*resType*/ ctx[7].data.length > 3
     				? 3
@@ -428,7 +443,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block_1(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(t.parentNode, t);
+    						each_blocks[i].m(t2.parentNode, t2);
     					}
     				}
 
@@ -440,8 +455,10 @@ var app = (function () {
     			}
     		},
     		d(detaching) {
+    			if (detaching) detach(h6);
+    			if (detaching) detach(t1);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach(t);
+    			if (detaching) detach(t2);
     			if (detaching) detach(div);
     		}
     	};
@@ -463,7 +480,7 @@ var app = (function () {
     	let div6;
     	let mounted;
     	let dispose;
-    	let if_block = /*searchResults*/ ctx[1].length > 0 && create_if_block(ctx);
+    	let if_block = /*searchResults*/ ctx[1].length > 0 && /*searchVal*/ ctx[0].length > 0 && create_if_block(ctx);
 
     	return {
     		c() {
@@ -528,7 +545,7 @@ var app = (function () {
     				set_input_value(input, /*searchVal*/ ctx[0]);
     			}
 
-    			if (/*searchResults*/ ctx[1].length > 0) {
+    			if (/*searchResults*/ ctx[1].length > 0 && /*searchVal*/ ctx[0].length > 0) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
