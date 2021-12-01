@@ -1,6 +1,21 @@
+<!--
+  /*
+  * TODO:
+  * - Allow for version switching
+  * - Make the dropdown go away once a search value has been selected
+  * -
+  */
+-->
+
 <script lang="ts">
-  import { SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG } from 'constants';
-import Hidden from './Hidden.svelte';
+  import * as jQuery from '../../node_modules/jquery/dist/jquery.js';
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    //window.$ = $;
+    window.jQuery = jQuery;
+    window.$ = jQuery;
+  });
 
   let searchVal = "";
   let searchResults: {
@@ -45,6 +60,7 @@ import Hidden from './Hidden.svelte';
   }[] = [];
   let searchDropDown: HTMLDivElement;
   let searchValSelected: boolean = false;
+  let proxy: string = "https://cors-server-snr.herokuapp.com/";
 
   // When searchVal changes then perform a get request to the phaser api
   function handleInput(e) 
@@ -52,9 +68,6 @@ import Hidden from './Hidden.svelte';
     if(e.target.value.length == 0) {
       searchValSelected = false;
       return;
-    }
-    else {
-      searchValSelected = true;
     }
 
     let getRequest = async function(searchKey: string): Promise<any> {
@@ -72,7 +85,21 @@ import Hidden from './Hidden.svelte';
 
   function handleLinkClick(e) 
   {
-    console.log(e);
+    let longname = window.jQuery.default(e.target).data('value');
+    searchValSelected = true;
+    searchVal = longname;
+
+
+    let getRequest = async function(searchKey: string): Promise<any> {
+        const response = await fetch(proxy + "https://newdocs.phaser.io/docs/3.55.2/" + searchKey );
+        const body = await response.text();
+        return body;
+    }
+
+    Promise.resolve(getRequest(longname.replace('-', '#'))).then(
+      function(val){
+        console.log(val);
+    });
   }
 </script>
 
@@ -11579,22 +11606,17 @@ import Hidden from './Hidden.svelte';
               bind:value={searchVal}
               on:input={handleInput}
             />
-            {#if searchResults.length > 0 && searchVal.length > 0}
+            {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
               <div class="dropdown-menu bg-secondary" id="autocomplete" bind:this={searchDropDown}>
                 {#each searchResults as resType}
                 <h6 class="dropdown-header text-white">{resType.type.charAt(0).toUpperCase() + resType.type.slice(1)}</h6>
                   {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
-                    <a class="dropdown-item text-white" href="#" on:click={handleLinkClick}>{resType.data[i].name}</a>
+                    <a class="dropdown-item text-white" data-value="{resType.data[i].longname}" on:click={handleLinkClick}>{resType.data[i].name}</a>
                   {/each}
                   <div class="dropdown-divider"></div>
                 {/each}
               </div>
             {/if}
-            <div class="input-group-append">
-              <span>
-                <button type="button" class="btn btn-outline-light btn-dark">Search</button>
-              </span>
-            </div>
           </div>
       </form>
     </div>
