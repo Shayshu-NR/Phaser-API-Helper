@@ -11442,7 +11442,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (123:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (136:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11504,7 +11504,7 @@ var app = (function () {
     	};
     }
 
-    // (133:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (146:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
     	let t_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].name + "";
@@ -11556,7 +11556,7 @@ var app = (function () {
     	};
     }
 
-    // (129:14) {#each searchResults as resType}
+    // (142:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
     	let t0_value = /*resType*/ ctx[13].type.charAt(0).toUpperCase() + /*resType*/ ctx[13].type.slice(1) + "";
@@ -11693,7 +11693,7 @@ var app = (function () {
     			ul = element("ul");
     			li0 = element("li");
     			a0 = element("a");
-    			a0.textContent = "Phaser 3.5+";
+    			a0.textContent = "Phaser 3";
     			t6 = space();
     			li1 = element("li");
     			a1 = element("a");
@@ -11853,6 +11853,8 @@ var app = (function () {
     		case "namespaces":
     		case "classes":
     			return longname;
+    		case "members":
+    			return memberof;
     		default:
     			return "";
     	}
@@ -11914,7 +11916,17 @@ var app = (function () {
     		Promise.resolve(getRequest(createPhaserDocSearchURL(longname, memberof, searchType))).then(function (val) {
     			var doc = document.createElement("html");
     			doc.innerHTML = val;
-    			$$invalidate(4, searchContent = window.jQuery.default(doc).find(".row").html());
+
+    			switch (searchType) {
+    				case "namespaces":
+    				case "classes":
+    					$$invalidate(4, searchContent = window.jQuery.default(doc).find(".row").html());
+    					break;
+    				case "members":
+    					var memberHeader = window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name");
+    					$$invalidate(4, searchContent = memberHeader.html() + memberHeader.next().html());
+    					break;
+    			}
     		});
     	}
 
@@ -11924,7 +11936,7 @@ var app = (function () {
     	}
 
     	const click_handler = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle();
-    	const click_handler_1 = () => window.jQuery.default('#version-btn').text('Phaser 3.5+').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
+    	const click_handler_1 = () => window.jQuery.default('#version-btn').text('Phaser 3').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
     	const click_handler_2 = () => window.jQuery.default('#version-btn').text('Phaser CE').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
 
     	function div_binding($$value) {

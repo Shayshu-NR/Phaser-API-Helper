@@ -128,6 +128,8 @@
       case "namespaces":
       case "classes":
         return longname;
+      case "members":
+        return memberof;
       default:
         return "";
     }
@@ -154,11 +156,24 @@
 
     Promise.resolve(
       getRequest(createPhaserDocSearchURL(longname, memberof, searchType))
-    ).then(function (val) {
+      ).then(function (val) {
       var doc = document.createElement("html");
       doc.innerHTML = val;
+        
+      switch(searchType) {
+      case "namespaces":
+      case "classes":
+        searchContent = window.jQuery.default(doc).find(".row").html();
+        break;
+      case "members":
+        var memberHeader = window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name");
+        searchContent = memberHeader.html() + memberHeader.next().html();
+        break;
+      default:
+        break;
+      }
 
-      searchContent = window.jQuery.default(doc).find(".row").html();
+
     });
   }
 </script>
@@ -185,7 +200,7 @@
           <div class="input-group-append">
             <button id="version-btn" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle()} class="btn btn-outline-light btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Phaser 3.5+</button>
             <ul class="dropdown-menu-btn dropdown-menu-end" style="display: none;">
-              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('#version-btn').text('Phaser 3.5+').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle())}>Phaser 3.5+</a></li>
+              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('#version-btn').text('Phaser 3').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle())}>Phaser 3</a></li>
               <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('#version-btn').text('Phaser CE').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle())}>Phaser CE</a></li>
             </ul>
           </div>
