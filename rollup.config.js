@@ -7,6 +7,8 @@ import typescript from "@rollup/plugin-typescript";
 import css from 'rollup-plugin-css-only';
 import path from "path";
 import fs from "fs";
+import copy from 'rollup-plugin-copy'
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -43,7 +45,12 @@ export default fs
           inlineSources: !production,
         }),
         production && terser(),
-        css({output : name + ".css"})
+        css({output : name + ".css"}),
+        copy({
+          targets: [{ 
+              src: 'node_modules/bootstrap/dist/**/*', 
+              dest: 'public/vendor/bootstrap' 
+          }]})
       ],
       watch: {
         clearScreen: false,

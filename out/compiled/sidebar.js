@@ -17,6 +17,7 @@ var app = (function () {
     }
 
     function noop() { }
+    const identity = x => x;
     function run(fn) {
         return fn();
     }
@@ -35,8 +36,60 @@ var app = (function () {
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
     function append(target, node) {
         target.appendChild(node);
+    }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root && root.host) {
+            return root;
+        }
+        return node.ownerDocument;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
     }
     function insert(target, node, anchor) {
         target.insertBefore(node, anchor || null);
@@ -79,6 +132,75 @@ var app = (function () {
     }
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
+    }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+    function custom_event(type, detail, bubbles = false) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, bubbles, false, detail);
+        return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = append_empty_stylesheet(node).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
     }
 
     let current_component;
@@ -157,12 +279,133 @@ var app = (function () {
             $$.after_update.forEach(add_render_callback);
         }
     }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
     const outroing = new Set();
+    let outros;
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
             block.i(local);
         }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = (program.b - t);
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
     }
     function mount_component(component, target, anchor, customElement) {
         const { fragment, on_mount, on_destroy, after_update } = component.$$;
@@ -11153,22 +11396,53 @@ var app = (function () {
         'default': jquery
     }, [jquery$1.exports]));
 
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function slide(node, { delay = 0, duration = 400, easing = cubicOut } = {}) {
+        const style = getComputedStyle(node);
+        const opacity = +style.opacity;
+        const height = parseFloat(style.height);
+        const padding_top = parseFloat(style.paddingTop);
+        const padding_bottom = parseFloat(style.paddingBottom);
+        const margin_top = parseFloat(style.marginTop);
+        const margin_bottom = parseFloat(style.marginBottom);
+        const border_top_width = parseFloat(style.borderTopWidth);
+        const border_bottom_width = parseFloat(style.borderBottomWidth);
+        return {
+            delay,
+            duration,
+            easing,
+            css: t => 'overflow: hidden;' +
+                `opacity: ${Math.min(t * 20, 1) * opacity};` +
+                `height: ${t * height}px;` +
+                `padding-top: ${t * padding_top}px;` +
+                `padding-bottom: ${t * padding_bottom}px;` +
+                `margin-top: ${t * margin_top}px;` +
+                `margin-bottom: ${t * margin_bottom}px;` +
+                `border-top-width: ${t * border_top_width}px;` +
+                `border-bottom-width: ${t * border_bottom_width}px;`
+        };
+    }
+
     /* webviews\components\Sidebar.svelte generated by Svelte v3.44.2 */
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i];
+    	child_ctx[13] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
-    	child_ctx[13] = i;
+    	child_ctx[16] = list[i];
+    	child_ctx[18] = i;
     	return child_ctx;
     }
 
-    // (11557:12) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (123:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11186,7 +11460,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr(div, "class", "dropdown-menu bg-secondary svelte-w9uy93");
+    			attr(div, "class", "dropdown-menu bg-secondary svelte-1m5olh2");
     			attr(div, "id", "autocomplete");
     		},
     		m(target, anchor) {
@@ -11196,10 +11470,10 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
 
-    			/*div_binding*/ ctx[7](div);
+    			/*div_binding*/ ctx[11](div);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*Array, searchResults, handleLinkClick*/ 34) {
+    			if (dirty & /*Array, searchResults, handleLinkClick*/ 66) {
     				each_value = /*searchResults*/ ctx[1];
     				let i;
 
@@ -11225,17 +11499,19 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(div);
     			destroy_each(each_blocks, detaching);
-    			/*div_binding*/ ctx[7](null);
+    			/*div_binding*/ ctx[11](null);
     		}
     	};
     }
 
-    // (11561:18) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (133:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
-    	let t_value = /*resType*/ ctx[8].data[/*i*/ ctx[13]].name + "";
+    	let t_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].name + "";
     	let t;
-    	let a_data_value_value;
+    	let a_data_value_longname_value;
+    	let a_data_value_memberof_value;
+    	let a_data_value_type_value;
     	let mounted;
     	let dispose;
 
@@ -11243,23 +11519,33 @@ var app = (function () {
     		c() {
     			a = element("a");
     			t = text(t_value);
-    			attr(a, "class", "dropdown-item text-white svelte-w9uy93");
-    			attr(a, "data-value", a_data_value_value = /*resType*/ ctx[8].data[/*i*/ ctx[13]].longname);
+    			attr(a, "class", "dropdown-item text-white svelte-1m5olh2");
+    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].longname);
+    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].memberof);
+    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[13].type);
     		},
     		m(target, anchor) {
     			insert(target, a, anchor);
     			append(a, t);
 
     			if (!mounted) {
-    				dispose = listen(a, "click", /*handleLinkClick*/ ctx[5]);
+    				dispose = listen(a, "click", /*handleLinkClick*/ ctx[6]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[8].data[/*i*/ ctx[13]].name + "")) set_data(t, t_value);
+    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].name + "")) set_data(t, t_value);
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_value !== (a_data_value_value = /*resType*/ ctx[8].data[/*i*/ ctx[13]].longname)) {
-    				attr(a, "data-value", a_data_value_value);
+    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].longname)) {
+    				attr(a, "data-value-longname", a_data_value_longname_value);
+    			}
+
+    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].memberof)) {
+    				attr(a, "data-value-memberof", a_data_value_memberof_value);
+    			}
+
+    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[13].type)) {
+    				attr(a, "data-value-type", a_data_value_type_value);
     			}
     		},
     		d(detaching) {
@@ -11270,18 +11556,18 @@ var app = (function () {
     	};
     }
 
-    // (11559:16) {#each searchResults as resType}
+    // (129:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
-    	let t0_value = /*resType*/ ctx[8].type.charAt(0).toUpperCase() + /*resType*/ ctx[8].type.slice(1) + "";
+    	let t0_value = /*resType*/ ctx[13].type.charAt(0).toUpperCase() + /*resType*/ ctx[13].type.slice(1) + "";
     	let t0;
     	let t1;
     	let t2;
     	let div;
 
-    	let each_value_1 = Array(/*resType*/ ctx[8].data.length > 3
+    	let each_value_1 = Array(/*resType*/ ctx[13].data.length > 3
     	? 3
-    	: /*resType*/ ctx[8].data.length);
+    	: /*resType*/ ctx[13].data.length);
 
     	let each_blocks = [];
 
@@ -11301,8 +11587,8 @@ var app = (function () {
 
     			t2 = space();
     			div = element("div");
-    			attr(h6, "class", "dropdown-header text-white svelte-w9uy93");
-    			attr(div, "class", "dropdown-divider svelte-w9uy93");
+    			attr(h6, "class", "dropdown-header text-white svelte-1m5olh2");
+    			attr(div, "class", "dropdown-divider svelte-1m5olh2");
     		},
     		m(target, anchor) {
     			insert(target, h6, anchor);
@@ -11317,12 +11603,12 @@ var app = (function () {
     			insert(target, div, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[8].type.charAt(0).toUpperCase() + /*resType*/ ctx[8].type.slice(1) + "")) set_data(t0, t0_value);
+    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[13].type.charAt(0).toUpperCase() + /*resType*/ ctx[13].type.slice(1) + "")) set_data(t0, t0_value);
 
-    			if (dirty & /*searchResults, handleLinkClick*/ 34) {
-    				each_value_1 = Array(/*resType*/ ctx[8].data.length > 3
+    			if (dirty & /*searchResults, handleLinkClick*/ 66) {
+    				each_value_1 = Array(/*resType*/ ctx[13].data.length > 3
     				? 3
-    				: /*resType*/ ctx[8].data.length);
+    				: /*resType*/ ctx[13].data.length);
 
     				let i;
 
@@ -11356,68 +11642,149 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let div5;
     	let div4;
-    	let div3;
     	let div0;
     	let t1;
-    	let div2;
+    	let div3;
     	let form;
-    	let div1;
+    	let div2;
     	let input;
     	let t2;
-    	let t3;
-    	let div5;
+    	let div1;
+    	let button;
+    	let t4;
+    	let ul;
+    	let li0;
+    	let a0;
+    	let t6;
+    	let li1;
+    	let a1;
+    	let t8;
+    	let t9;
+    	let br;
+    	let t10;
+    	let div8;
+    	let div7;
+    	let div6;
+    	let div8_style_value;
+    	let div8_transition;
+    	let current;
     	let mounted;
     	let dispose;
     	let if_block = /*searchResults*/ ctx[1].length > 0 && /*searchVal*/ ctx[0].length > 0 && !/*searchValSelected*/ ctx[3] && create_if_block(ctx);
 
     	return {
     		c() {
+    			div5 = element("div");
     			div4 = element("div");
-    			div3 = element("div");
     			div0 = element("div");
     			div0.textContent = "Search Phaser API Documentation";
     			t1 = space();
-    			div2 = element("div");
+    			div3 = element("div");
     			form = element("form");
-    			div1 = element("div");
+    			div2 = element("div");
     			input = element("input");
     			t2 = space();
+    			div1 = element("div");
+    			button = element("button");
+    			button.textContent = "Phaser 3.5+";
+    			t4 = space();
+    			ul = element("ul");
+    			li0 = element("li");
+    			a0 = element("a");
+    			a0.textContent = "Phaser 3.5+";
+    			t6 = space();
+    			li1 = element("li");
+    			a1 = element("a");
+    			a1.textContent = "Phaser CE";
+    			t8 = space();
     			if (if_block) if_block.c();
-    			t3 = space();
-    			div5 = element("div");
-    			attr(div0, "class", "card-header svelte-w9uy93");
+    			t9 = space();
+    			br = element("br");
+    			t10 = space();
+    			div8 = element("div");
+    			div7 = element("div");
+    			div6 = element("div");
+    			attr(div0, "class", "card-header svelte-1m5olh2");
     			attr(input, "type", "text");
-    			attr(input, "class", "form-control bg-dark text-white svelte-w9uy93");
+    			attr(input, "class", "form-control bg-dark text-white svelte-1m5olh2");
     			attr(input, "placeholder", "Search Docs...");
-    			attr(div1, "class", "input-group mb-3 svelte-w9uy93");
-    			attr(form, "class", "form-inline svelte-w9uy93");
-    			attr(div2, "class", "card-body svelte-w9uy93");
-    			attr(div3, "class", "card bg-dark svelte-w9uy93");
-    			attr(div4, "class", "container text-white svelte-w9uy93");
-    			attr(div5, "class", "container svelte-w9uy93");
-    			attr(div5, "id", "results");
+    			attr(button, "id", "version-btn");
+    			attr(button, "class", "btn btn-outline-light btn-dark dropdown-toggle svelte-1m5olh2");
+    			attr(button, "type", "button");
+    			attr(button, "data-bs-toggle", "dropdown");
+    			attr(button, "aria-expanded", "false");
+    			attr(a0, "class", "dropdown-item svelte-1m5olh2");
+    			attr(a0, "href", "#");
+    			attr(li0, "class", "svelte-1m5olh2");
+    			attr(a1, "class", "dropdown-item svelte-1m5olh2");
+    			attr(a1, "href", "#");
+    			attr(li1, "class", "svelte-1m5olh2");
+    			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end svelte-1m5olh2");
+    			set_style(ul, "display", "none");
+    			attr(div1, "class", "input-group-append svelte-1m5olh2");
+    			attr(div2, "class", "input-group mb-3 svelte-1m5olh2");
+    			attr(form, "class", "form-inline svelte-1m5olh2");
+    			attr(div3, "class", "card-body svelte-1m5olh2");
+    			attr(div4, "class", "card bg-dark svelte-1m5olh2");
+    			attr(div5, "class", "container text-white svelte-1m5olh2");
+    			attr(br, "class", "svelte-1m5olh2");
+    			attr(div6, "class", "card-body svelte-1m5olh2");
+    			attr(div6, "contenteditable", "true");
+    			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[12].call(div6));
+    			attr(div7, "class", "card bg-dark svelte-1m5olh2");
+    			attr(div8, "class", "container svelte-1m5olh2");
+    			attr(div8, "id", "results");
+
+    			attr(div8, "style", div8_style_value = /*searchContent*/ ctx[4].length > 0
+    			? ""
+    			: "display: none;");
     		},
     		m(target, anchor) {
-    			insert(target, div4, anchor);
-    			append(div4, div3);
-    			append(div3, div0);
-    			append(div3, t1);
-    			append(div3, div2);
-    			append(div2, form);
-    			append(form, div1);
-    			append(div1, input);
-    			set_input_value(input, /*searchVal*/ ctx[0]);
-    			append(div1, t2);
-    			if (if_block) if_block.m(div1, null);
-    			insert(target, t3, anchor);
     			insert(target, div5, anchor);
+    			append(div5, div4);
+    			append(div4, div0);
+    			append(div4, t1);
+    			append(div4, div3);
+    			append(div3, form);
+    			append(form, div2);
+    			append(div2, input);
+    			set_input_value(input, /*searchVal*/ ctx[0]);
+    			append(div2, t2);
+    			append(div2, div1);
+    			append(div1, button);
+    			append(div1, t4);
+    			append(div1, ul);
+    			append(ul, li0);
+    			append(li0, a0);
+    			append(ul, t6);
+    			append(ul, li1);
+    			append(li1, a1);
+    			append(div2, t8);
+    			if (if_block) if_block.m(div2, null);
+    			insert(target, t9, anchor);
+    			insert(target, br, anchor);
+    			insert(target, t10, anchor);
+    			insert(target, div8, anchor);
+    			append(div8, div7);
+    			append(div7, div6);
+
+    			if (/*searchContent*/ ctx[4] !== void 0) {
+    				div6.innerHTML = /*searchContent*/ ctx[4];
+    			}
+
+    			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler*/ ctx[6]),
-    					listen(input, "input", /*handleInput*/ ctx[4]),
-    					listen(form, "submit", submit_handler)
+    					listen(input, "input", /*input_input_handler*/ ctx[7]),
+    					listen(input, "input", /*handleInput*/ ctx[5]),
+    					listen(button, "click", /*click_handler*/ ctx[8]),
+    					listen(a0, "click", /*click_handler_1*/ ctx[9]),
+    					listen(a1, "click", /*click_handler_2*/ ctx[10]),
+    					listen(form, "submit", submit_handler),
+    					listen(div6, "input", /*div6_input_handler*/ ctx[12])
     				];
 
     				mounted = true;
@@ -11434,27 +11801,62 @@ var app = (function () {
     				} else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(div2, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
+
+    			if (dirty & /*searchContent*/ 16 && /*searchContent*/ ctx[4] !== div6.innerHTML) {
+    				div6.innerHTML = /*searchContent*/ ctx[4];
+    			}
+
+    			if (!current || dirty & /*searchContent*/ 16 && div8_style_value !== (div8_style_value = /*searchContent*/ ctx[4].length > 0
+    			? ""
+    			: "display: none;")) {
+    				attr(div8, "style", div8_style_value);
+    			}
     		},
-    		i: noop,
-    		o: noop,
+    		i(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!div8_transition) div8_transition = create_bidirectional_transition(div8, slide, {}, true);
+    				div8_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o(local) {
+    			if (!div8_transition) div8_transition = create_bidirectional_transition(div8, slide, {}, false);
+    			div8_transition.run(0);
+    			current = false;
+    		},
     		d(detaching) {
-    			if (detaching) detach(div4);
-    			if (if_block) if_block.d();
-    			if (detaching) detach(t3);
     			if (detaching) detach(div5);
+    			if (if_block) if_block.d();
+    			if (detaching) detach(t9);
+    			if (detaching) detach(br);
+    			if (detaching) detach(t10);
+    			if (detaching) detach(div8);
+    			if (detaching && div8_transition) div8_transition.end();
     			mounted = false;
     			run_all(dispose);
     		}
     	};
     }
 
-    let proxy = "https://cors-server-snr.herokuapp.com/";
+    function createPhaserDocSearchURL(longname, memberof, searchType) {
+    	//
+    	switch (searchType) {
+    		case "namespaces":
+    		case "classes":
+    			return longname;
+    		default:
+    			return "";
+    	}
+    }
 
     const submit_handler = e => {
     	e.preventDefault();
@@ -11472,6 +11874,7 @@ var app = (function () {
     	let searchResults = [];
     	let searchDropDown;
     	let searchValSelected = false;
+    	let searchContent = "";
 
     	// When searchVal changes then perform a get request to the phaser api
     	function handleInput(e) {
@@ -11495,18 +11898,23 @@ var app = (function () {
     	}
 
     	function handleLinkClick(e) {
-    		let longname = window.jQuery.default(e.target).data('value');
+    		let longname = window.jQuery.default(e.target).data("value-longname");
+    		let memberof = window.jQuery.default(e.target).data("value-memberof");
+    		let searchType = window.jQuery.default(e.target).data("value-type");
     		$$invalidate(3, searchValSelected = true);
     		$$invalidate(0, searchVal = longname);
+    		console.log(longname, memberof);
 
     		let getRequest = async function (searchKey) {
-    			const response = await fetch(proxy + "https://newdocs.phaser.io/docs/3.55.2/" + searchKey);
+    			const response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" + searchKey + ".html");
     			const body = await response.text();
     			return body;
     		};
 
-    		Promise.resolve(getRequest(longname.replace('-', '#'))).then(function (val) {
-    			console.log(val);
+    		Promise.resolve(getRequest(createPhaserDocSearchURL(longname, memberof, searchType))).then(function (val) {
+    			var doc = document.createElement("html");
+    			doc.innerHTML = val;
+    			$$invalidate(4, searchContent = window.jQuery.default(doc).find(".row").html());
     		});
     	}
 
@@ -11515,6 +11923,10 @@ var app = (function () {
     		$$invalidate(0, searchVal);
     	}
 
+    	const click_handler = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle();
+    	const click_handler_1 = () => window.jQuery.default('#version-btn').text('Phaser 3.5+').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
+    	const click_handler_2 = () => window.jQuery.default('#version-btn').text('Phaser CE').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
+
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			searchDropDown = $$value;
@@ -11522,15 +11934,25 @@ var app = (function () {
     		});
     	}
 
+    	function div6_input_handler() {
+    		searchContent = this.innerHTML;
+    		$$invalidate(4, searchContent);
+    	}
+
     	return [
     		searchVal,
     		searchResults,
     		searchDropDown,
     		searchValSelected,
+    		searchContent,
     		handleInput,
     		handleLinkClick,
     		input_input_handler,
-    		div_binding
+    		click_handler,
+    		click_handler_1,
+    		click_handler_2,
+    		div_binding,
+    		div6_input_handler
     	];
     }
 
