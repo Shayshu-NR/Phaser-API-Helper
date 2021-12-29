@@ -1,0 +1,784 @@
+{
+    "Data" : [
+        {
+            "type": "namespaces",
+            "data": [
+                {
+                    "longname": "Phaser",
+                    "docpage": "Phaser.html"
+                },
+                {
+                    "longname": "PhaserGlobal",
+                    "docpage": "PhaserGlobal.html"
+                },
+                {
+                    "longname": "PIXI",
+                    "docpage": "PIXI.html"
+                }
+            ]
+        },
+        {
+            "type": "classes",
+            "data": [
+                {
+                    "docpage": "CreatureShader.html",
+                    "longname": "CreatureShader"
+                },
+                {
+                    "docpage": "EarCut.html",
+                    "longname": "EarCut"
+                },
+                {
+                    "docpage": "Event.html",
+                    "longname": "Event"
+                },
+                {
+                    "docpage": "EventTarget.html",
+                    "longname": "EventTarget"
+                },
+                {
+                    "docpage": "Phaser.Animation.html",
+                    "longname": "Animation"
+                },
+                {
+                    "docpage": "Phaser.AnimationManager.html",
+                    "longname": "AnimationManager"
+                },
+                {
+                    "docpage": "Phaser.AnimationParser.html",
+                    "longname": "AnimationParser"
+                },
+                {
+                    "docpage": "Phaser.ArraySet.html",
+                    "longname": "ArraySet"
+                },
+                {
+                    "docpage": "Phaser.ArrayUtils.html",
+                    "longname": "ArrayUtils"
+                },
+                {
+                    "docpage": "Phaser.AudioSprite.html",
+                    "longname": "AudioSprite"
+                },
+                {
+                    "docpage": "Phaser.BitmapData.html",
+                    "longname": "BitmapData"
+                },
+                {
+                    "docpage": "Phaser.BitmapText.html",
+                    "longname": "BitmapText"
+                },
+                {
+                    "docpage": "Phaser.Bullet.html",
+                    "longname": "Bullet"
+                },
+                {
+                    "docpage": "Phaser.Button.html",
+                    "longname": "Button"
+                },
+                {
+                    "docpage": "Phaser.Cache.html",
+                    "longname": "Cache"
+                },
+                {
+                    "docpage": "Phaser.Camera.html",
+                    "longname": "Camera"
+                },
+                {
+                    "docpage": "Phaser.Canvas.html",
+                    "longname": "Canvas"
+                },
+                {
+                    "docpage": "Phaser.CanvasPool.html",
+                    "longname": "CanvasPool"
+                },
+                {
+                    "docpage": "Phaser.Circle.html",
+                    "longname": "Circle"
+                },
+                {
+                    "docpage": "Phaser.Color.html",
+                    "longname": "Color"
+                },
+                {
+                    "docpage": "Phaser.Component.Angle.html",
+                    "longname": "Angle"
+                },
+                {
+                    "docpage": "Phaser.Component.Animation.html",
+                    "longname": "Animation"
+                },
+                {
+                    "docpage": "Phaser.Component.AutoCull.html",
+                    "longname": "AutoCull"
+                },
+                {
+                    "docpage": "Phaser.Component.Bounds.html",
+                    "longname": "Bounds"
+                },
+                {
+                    "docpage": "Phaser.Component.BringToTop.html",
+                    "longname": "BringToTop"
+                },
+                {
+                    "docpage": "Phaser.Component.Core.html",
+                    "longname": "Core"
+                },
+                {
+                    "docpage": "Phaser.Component.Crop.html",
+                    "longname": "Crop"
+                },
+                {
+                    "docpage": "Phaser.Component.Delta.html",
+                    "longname": "Delta"
+                },
+                {
+                    "docpage": "Phaser.Component.Destroy.html",
+                    "longname": "Destroy"
+                },
+                {
+                    "docpage": "Phaser.Component.FixedToCamera.html",
+                    "longname": "FixedToCamera"
+                },
+                {
+                    "docpage": "Phaser.Component.Health.html",
+                    "longname": "Health"
+                },
+                {
+                    "docpage": "Phaser.Component.InCamera.html",
+                    "longname": "InCamera"
+                },
+                {
+                    "docpage": "Phaser.Component.InputEnabled.html",
+                    "longname": "InputEnabled"
+                },
+                {
+                    "docpage": "Phaser.Component.InWorld.html",
+                    "longname": "InWorld"
+                },
+                {
+                    "docpage": "Phaser.Component.LifeSpan.html",
+                    "longname": "LifeSpan"
+                },
+                {
+                    "docpage": "Phaser.Component.LoadTexture.html",
+                    "longname": "LoadTexture"
+                },
+                {
+                    "docpage": "Phaser.Component.Overlap.html",
+                    "longname": "Overlap"
+                },
+                {
+                    "docpage": "Phaser.Component.PhysicsBody.html",
+                    "longname": "PhysicsBody"
+                },
+                {
+                    "docpage": "Phaser.Component.Reset.html",
+                    "longname": "Reset"
+                },
+                {
+                    "docpage": "Phaser.Component.ScaleMinMax.html",
+                    "longname": "ScaleMinMax"
+                },
+                {
+                    "docpage": "Phaser.Component.Smoothed.html",
+                    "longname": "Smoothed"
+                },
+                {
+                    "docpage": "Phaser.Create.html",
+                    "longname": "Create"
+                },
+                {
+                    "docpage": "Phaser.Creature.html",
+                    "longname": "Creature"
+                },
+                {
+                    "docpage": "Phaser.Device.html",
+                    "longname": "Device"
+                },
+                {
+                    "docpage": "Phaser.DeviceButton.html",
+                    "longname": "DeviceButton"
+                },
+                {
+                    "docpage": "Phaser.DOM.html",
+                    "longname": "DOM"
+                },
+                {
+                    "docpage": "Phaser.Easing.html",
+                    "longname": "Easing"
+                },
+                {
+                    "docpage": "Phaser.Easing.Back.html",
+                    "longname": "Back"
+                },
+                {
+                    "docpage": "Phaser.Easing.Bounce.html",
+                    "longname": "Bounce"
+                },
+                {
+                    "docpage": "Phaser.Easing.Circular.html",
+                    "longname": "Circular"
+                },
+                {
+                    "docpage": "Phaser.Easing.Cubic.html",
+                    "longname": "Cubic"
+                },
+                {
+                    "docpage": "Phaser.Easing.Elastic.html",
+                    "longname": "Elastic"
+                },
+                {
+                    "docpage": "Phaser.Easing.Exponential.html",
+                    "longname": "Exponential"
+                },
+                {
+                    "docpage": "Phaser.Easing.Linear.html",
+                    "longname": "Linear"
+                },
+                {
+                    "docpage": "Phaser.Easing.Quadratic.html",
+                    "longname": "Quadratic"
+                },
+                {
+                    "docpage": "Phaser.Easing.Quartic.html",
+                    "longname": "Quartic"
+                },
+                {
+                    "docpage": "Phaser.Easing.Quintic.html",
+                    "longname": "Quintic"
+                },
+                {
+                    "docpage": "Phaser.Easing.Sinusoidal.html",
+                    "longname": "Sinusoidal"
+                },
+                {
+                    "docpage": "Phaser.Ellipse.html",
+                    "longname": "Ellipse"
+                },
+                {
+                    "docpage": "Phaser.Events.html",
+                    "longname": "Events"
+                },
+                {
+                    "docpage": "Phaser.Filter.html",
+                    "longname": "Filter"
+                },
+                {
+                    "docpage": "Phaser.FlexGrid.html",
+                    "longname": "FlexGrid"
+                },
+                {
+                    "docpage": "Phaser.FlexLayer.html",
+                    "longname": "FlexLayer"
+                },
+                {
+                    "docpage": "Phaser.Frame.html",
+                    "longname": "Frame"
+                },
+                {
+                    "docpage": "Phaser.FrameData.html",
+                    "longname": "FrameData"
+                },
+                {
+                    "docpage": "Phaser.Game.html",
+                    "longname": "Game"
+                },
+                {
+                    "docpage": "Phaser.GameObjectCreator.html",
+                    "longname": "GameObjectCreator"
+                },
+                {
+                    "docpage": "Phaser.GameObjectFactory.html",
+                    "longname": "GameObjectFactory"
+                },
+                {
+                    "docpage": "Phaser.Gamepad.html",
+                    "longname": "Gamepad"
+                },
+                {
+                    "docpage": "Phaser.Graphics.html",
+                    "longname": "Graphics"
+                },
+                {
+                    "docpage": "Phaser.GraphicsData.html",
+                    "longname": "GraphicsData"
+                },
+                {
+                    "docpage": "Phaser.Group.html",
+                    "longname": "Group"
+                },
+                {
+                    "docpage": "Phaser.Hermite.html",
+                    "longname": "Hermite"
+                },
+                {
+                    "docpage": "Phaser.Image.html",
+                    "longname": "Image"
+                },
+                {
+                    "docpage": "Phaser.ImageCollection.html",
+                    "longname": "ImageCollection"
+                },
+                {
+                    "docpage": "Phaser.Input.html",
+                    "longname": "Input"
+                },
+                {
+                    "docpage": "Phaser.InputHandler.html",
+                    "longname": "InputHandler"
+                },
+                {
+                    "docpage": "Phaser.Key.html",
+                    "longname": "Key"
+                },
+                {
+                    "docpage": "Phaser.Keyboard.html",
+                    "longname": "Keyboard"
+                },
+                {
+                    "docpage": "Phaser.KeyCode.html",
+                    "longname": "KeyCode"
+                },
+                {
+                    "docpage": "Phaser.Line.html",
+                    "longname": "Line"
+                },
+                {
+                    "docpage": "Phaser.LinkedList.html",
+                    "longname": "LinkedList"
+                },
+                {
+                    "docpage": "Phaser.Loader.html",
+                    "longname": "Loader"
+                },
+                {
+                    "docpage": "Phaser.LoaderParser.html",
+                    "longname": "LoaderParser"
+                },
+                {
+                    "docpage": "Phaser.Math.html",
+                    "longname": "Math"
+                },
+                {
+                    "docpage": "Phaser.Matrix.html",
+                    "longname": "Matrix"
+                },
+                {
+                    "docpage": "Phaser.Mouse.html",
+                    "longname": "Mouse"
+                },
+                {
+                    "docpage": "Phaser.MouseWheel.html",
+                    "longname": "MouseWheel"
+                },
+                {
+                    "docpage": "Phaser.MSPointer.html",
+                    "longname": "MSPointer"
+                },
+                {
+                    "docpage": "Phaser.Particle.html",
+                    "longname": "Particle"
+                },
+                {
+                    "docpage": "Phaser.Particles.html",
+                    "longname": "Particles"
+                },
+                {
+                    "docpage": "Phaser.Particles.Arcade.html",
+                    "longname": "Arcade"
+                },
+                {
+                    "docpage": "Phaser.Particles.Arcade.Emitter.html",
+                    "longname": "Emitter"
+                },
+                {
+                    "docpage": "Phaser.Path.html",
+                    "longname": "Path"
+                },
+                {
+                    "docpage": "Phaser.PathFollower.html",
+                    "longname": "PathFollower"
+                },
+                {
+                    "docpage": "Phaser.PathPoint.html",
+                    "longname": "PathPoint"
+                },
+                {
+                    "docpage": "Phaser.Physics.html",
+                    "longname": "Physics"
+                },
+                {
+                    "docpage": "Phaser.Physics.Arcade.html",
+                    "longname": "Arcade"
+                },
+                {
+                    "docpage": "Phaser.Physics.Arcade.Body.html",
+                    "longname": "Body"
+                },
+                {
+                    "docpage": "Phaser.Physics.Arcade.TilemapCollision.html",
+                    "longname": "TilemapCollision"
+                },
+                {
+                    "docpage": "Phaser.Physics.Ninja.html",
+                    "longname": "Ninja"
+                },
+                {
+                    "docpage": "Phaser.Physics.Ninja.AABB.html",
+                    "longname": "AABB"
+                },
+                {
+                    "docpage": "Phaser.Physics.Ninja.Body.html",
+                    "longname": "Body"
+                },
+                {
+                    "docpage": "Phaser.Physics.Ninja.Circle.html",
+                    "longname": "Circle"
+                },
+                {
+                    "docpage": "Phaser.Physics.Ninja.Tile.html",
+                    "longname": "Tile"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.html",
+                    "longname": "P2"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.Body.html",
+                    "longname": "Body"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.BodyDebug.html",
+                    "longname": "BodyDebug"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.CollisionGroup.html",
+                    "longname": "CollisionGroup"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.ContactMaterial.html",
+                    "longname": "ContactMaterial"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.DistanceConstraint.html",
+                    "longname": "DistanceConstraint"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.FixtureList.html",
+                    "longname": "FixtureList"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.GearConstraint.html",
+                    "longname": "GearConstraint"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.InversePointProxy.html",
+                    "longname": "InversePointProxy"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.LockConstraint.html",
+                    "longname": "LockConstraint"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.Material.html",
+                    "longname": "Material"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.PointProxy.html",
+                    "longname": "PointProxy"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.PrismaticConstraint.html",
+                    "longname": "PrismaticConstraint"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.RevoluteConstraint.html",
+                    "longname": "RevoluteConstraint"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.RotationalSpring.html",
+                    "longname": "RotationalSpring"
+                },
+                {
+                    "docpage": "Phaser.Physics.P2.Spring.html",
+                    "longname": "Spring"
+                },
+                {
+                    "docpage": "Phaser.Plugin.html",
+                    "longname": "Plugin"
+                },
+                {
+                    "docpage": "Phaser.Plugin.PathManager.html",
+                    "longname": "PathManager"
+                },
+                {
+                    "docpage": "Phaser.PluginManager.html",
+                    "longname": "PluginManager"
+                },
+                {
+                    "docpage": "Phaser.Point.html",
+                    "longname": "Point"
+                },
+                {
+                    "docpage": "Phaser.Pointer.html",
+                    "longname": "Pointer"
+                },
+                {
+                    "docpage": "Phaser.PointerLock.html",
+                    "longname": "PointerLock"
+                },
+                {
+                    "docpage": "Phaser.PointerMode.html",
+                    "longname": "PointerMode"
+                },
+                {
+                    "docpage": "Phaser.Polygon.html",
+                    "longname": "Polygon"
+                },
+                {
+                    "docpage": "Phaser.QuadTree.html",
+                    "longname": "QuadTree"
+                },
+                {
+                    "docpage": "Phaser.RandomDataGenerator.html",
+                    "longname": "RandomDataGenerator"
+                },
+                {
+                    "docpage": "Phaser.Rectangle.html",
+                    "longname": "Rectangle"
+                },
+                {
+                    "docpage": "Phaser.RenderTexture.html",
+                    "longname": "RenderTexture"
+                },
+                {
+                    "docpage": "Phaser.RequestAnimationFrame.html",
+                    "longname": "RequestAnimationFrame"
+                },
+                {
+                    "docpage": "Phaser.RetroFont.html",
+                    "longname": "RetroFont"
+                },
+                {
+                    "docpage": "Phaser.Rope.html",
+                    "longname": "Rope"
+                },
+                {
+                    "docpage": "Phaser.RoundedRectangle.html",
+                    "longname": "RoundedRectangle"
+                },
+                {
+                    "docpage": "Phaser.ScaleManager.html",
+                    "longname": "ScaleManager"
+                },
+                {
+                    "docpage": "Phaser.Signal.html",
+                    "longname": "Signal"
+                },
+                {
+                    "docpage": "Phaser.SignalBinding.html",
+                    "longname": "SignalBinding"
+                },
+                {
+                    "docpage": "Phaser.SinglePad.html",
+                    "longname": "SinglePad"
+                },
+                {
+                    "docpage": "Phaser.Sound.html",
+                    "longname": "Sound"
+                },
+                {
+                    "docpage": "Phaser.SoundManager.html",
+                    "longname": "SoundManager"
+                },
+                {
+                    "docpage": "Phaser.Sprite.html",
+                    "longname": "Sprite"
+                },
+                {
+                    "docpage": "Phaser.SpriteBatch.html",
+                    "longname": "SpriteBatch"
+                },
+                {
+                    "docpage": "Phaser.Stage.html",
+                    "longname": "Stage"
+                },
+                {
+                    "docpage": "Phaser.State.html",
+                    "longname": "State"
+                },
+                {
+                    "docpage": "Phaser.StateManager.html",
+                    "longname": "StateManager"
+                },
+                {
+                    "docpage": "Phaser.Text.html",
+                    "longname": "Text"
+                },
+                {
+                    "docpage": "Phaser.Tile.html",
+                    "longname": "Tile"
+                },
+                {
+                    "docpage": "Phaser.Tilemap.html",
+                    "longname": "Tilemap"
+                },
+                {
+                    "docpage": "Phaser.TilemapLayer.html",
+                    "longname": "TilemapLayer"
+                },
+                {
+                    "docpage": "Phaser.TilemapParser.html",
+                    "longname": "TilemapParser"
+                },
+                {
+                    "docpage": "Phaser.Tileset.html",
+                    "longname": "Tileset"
+                },
+                {
+                    "docpage": "Phaser.TileSprite.html",
+                    "longname": "TileSprite"
+                },
+                {
+                    "docpage": "Phaser.Time.html",
+                    "longname": "Time"
+                },
+                {
+                    "docpage": "Phaser.Timer.html",
+                    "longname": "Timer"
+                },
+                {
+                    "docpage": "Phaser.TimerEvent.html",
+                    "longname": "TimerEvent"
+                },
+                {
+                    "docpage": "Phaser.Touch.html",
+                    "longname": "Touch"
+                },
+                {
+                    "docpage": "Phaser.Tween.html",
+                    "longname": "Tween"
+                },
+                {
+                    "docpage": "Phaser.TweenData.html",
+                    "longname": "TweenData"
+                },
+                {
+                    "docpage": "Phaser.TweenManager.html",
+                    "longname": "TweenManager"
+                },
+                {
+                    "docpage": "Phaser.Utils.html",
+                    "longname": "Utils"
+                },
+                {
+                    "docpage": "Phaser.Utils.Debug.html",
+                    "longname": "Debug"
+                },
+                {
+                    "docpage": "Phaser.Video.html",
+                    "longname": "Video"
+                },
+                {
+                    "docpage": "Phaser.Weapon.html",
+                    "longname": "Weapon"
+                },
+                {
+                    "docpage": "Phaser.World.html",
+                    "longname": "World"
+                },
+                {
+                    "docpage": "PIXI.BaseTexture.html",
+                    "longname": "BaseTexture"
+                },
+                {
+                    "docpage": "PIXI.CanvasBuffer.html",
+                    "longname": "CanvasBuffer"
+                },
+                {
+                    "docpage": "PIXI.CanvasGraphics.html",
+                    "longname": "CanvasGraphics"
+                },
+                {
+                    "docpage": "PIXI.CanvasMaskManager.html",
+                    "longname": "CanvasMaskManager"
+                },
+                {
+                    "docpage": "PIXI.CanvasRenderer.html",
+                    "longname": "CanvasRenderer"
+                },
+                {
+                    "docpage": "PIXI.CanvasTinter.html",
+                    "longname": "CanvasTinter"
+                },
+                {
+                    "docpage": "PIXI.ComplexPrimitiveShader.html",
+                    "longname": "ComplexPrimitiveShader"
+                },
+                {
+                    "docpage": "PIXI.DisplayObject.html",
+                    "longname": "DisplayObject"
+                },
+                {
+                    "docpage": "PIXI.DisplayObjectContainer.html",
+                    "longname": "DisplayObjectContainer"
+                },
+                {
+                    "docpage": "PIXI.FilterTexture.html",
+                    "longname": "FilterTexture"
+                },
+                {
+                    "docpage": "PIXI.PixiFastShader.html",
+                    "longname": "PixiFastShader"
+                },
+                {
+                    "docpage": "PIXI.PixiShader.html",
+                    "longname": "PixiShader"
+                },
+                {
+                    "docpage": "PIXI.PrimitiveShader.html",
+                    "longname": "PrimitiveShader"
+                },
+                {
+                    "docpage": "PIXI.Sprite.html",
+                    "longname": "Sprite"
+                },
+                {
+                    "docpage": "PIXI.StripShader.html",
+                    "longname": "StripShader"
+                },
+                {
+                    "docpage": "PIXI.Texture.html",
+                    "longname": "Texture"
+                },
+                {
+                    "docpage": "PIXI.WebGLBlendModeManager.html",
+                    "longname": "WebGLBlendModeManager"
+                },
+                {
+                    "docpage": "PIXI.WebGLFastSpriteBatch.html",
+                    "longname": "WebGLFastSpriteBatch"
+                },
+                {
+                    "docpage": "PIXI.WebGLFilterManager.html",
+                    "longname": "WebGLFilterManager"
+                },
+                {
+                    "docpage": "PIXI.WebGLRenderer.html",
+                    "longname": "WebGLRenderer"
+                }
+            ]
+        },
+        {
+            "type": "global",
+            "data": [
+                {
+                    "longname": "Global",
+                    "docpage": "global.html"
+                }
+            ]
+        }
+    ]
+}
+

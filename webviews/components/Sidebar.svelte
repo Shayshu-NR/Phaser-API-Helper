@@ -5,26 +5,6 @@
   * - Make the dropdown go away once a search value has been selected
   * -
   */
-
-  Namespaces
-  Classes
-    - Shows everything
-    - Use github raw
-
-  Members
-  Typedef
-  - Only show relavent data
-  - Use github raw
-  
-  Function
-  - Only show relavent data
-  - Isolate class/namespace 
-  - Use github raw
-  
-  Events
-  Constants
-  - Only show relavent data
-  - Use official phaser doc
 -->
 <script lang="ts">
   import * as jQuery from "../../node_modules/jquery/dist/jquery.js";
@@ -39,6 +19,8 @@
     scale,
     slide,
   } from "svelte/transition";
+  import phaserCEDict from "./PhaserCESearchData.json";
+  console.log(phaserCEDict);
 
   onMount(() => {
     //window.$ = $;
@@ -92,6 +74,7 @@
   let proxy: string = "https://cors-server-snr.herokuapp.com/";
   let refLink: string = "";
   let searchContent: string = "";
+  let searchVersion: string = "Phaser 3";
 
   // When searchVal changes then perform a get request to the phaser api
   function handleInput(e) {
@@ -101,13 +84,20 @@
     }
 
     let getRequest = async function (searchKey: string): Promise<any> {
-      const response = await fetch(
-        "https://newdocs.phaser.io/api/search-bar?search=" +
-          searchKey +
-          "&version=3.55.2"
-      );
-      const body = await response.text();
-      return body;
+      console.log(searchVersion)
+      switch(searchVersion) {
+        case "Phaser 3" :
+          const response = await fetch(
+            "https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2"
+          );
+          const body = await response.text();
+          return body;
+        case "Phaser CE" :
+          console.log(<any>phaserCEDict);
+          return "";
+        default: 
+         return "";
+      }
     };
 
     console.log(e.target.value);
@@ -198,10 +188,10 @@
             on:input={handleInput}
           />
           <div class="input-group-append">
-            <button id="version-btn" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle()} class="btn btn-outline-light btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Phaser 3.5+</button>
-            <ul class="dropdown-menu-btn dropdown-menu-end" style="display: none;">
-              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('#version-btn').text('Phaser 3').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle())}>Phaser 3</a></li>
-              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('#version-btn').text('Phaser CE').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle())}>Phaser CE</a></li>
+            <button id="version-btn" contenteditable="true" bind:textContent={searchVersion} on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle()} class="btn btn-outline-light btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Phaser 3</button>
+            <ul class="dropdown-menu-btn dropdown-menu-end bg-secondary" style="display: none;">
+              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then(searchVersion = "Phaser 3")}>Phaser 3</a></li>
+              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then(searchVersion = "Phaser CE")}>Phaser CE</a></li>
             </ul>
           </div>
           {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
@@ -440,7 +430,7 @@
     text-decoration: none;
   }
 
-  code,
+  :global(code),
   kbd,
   pre,
   samp {

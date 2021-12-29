@@ -11427,22 +11427,24 @@ var app = (function () {
         };
     }
 
+    const Data=[{type:"namespaces",data:[{longname:"Phaser",docpage:"Phaser.html"},{longname:"PhaserGlobal",docpage:"PhaserGlobal.html"},{longname:"PIXI",docpage:"PIXI.html"}]},{type:"classes",data:[{docpage:"CreatureShader.html",longname:"CreatureShader"},{docpage:"EarCut.html",longname:"EarCut"},{docpage:"Event.html",longname:"Event"},{docpage:"EventTarget.html",longname:"EventTarget"},{docpage:"Phaser.Animation.html",longname:"Animation"},{docpage:"Phaser.AnimationManager.html",longname:"AnimationManager"},{docpage:"Phaser.AnimationParser.html",longname:"AnimationParser"},{docpage:"Phaser.ArraySet.html",longname:"ArraySet"},{docpage:"Phaser.ArrayUtils.html",longname:"ArrayUtils"},{docpage:"Phaser.AudioSprite.html",longname:"AudioSprite"},{docpage:"Phaser.BitmapData.html",longname:"BitmapData"},{docpage:"Phaser.BitmapText.html",longname:"BitmapText"},{docpage:"Phaser.Bullet.html",longname:"Bullet"},{docpage:"Phaser.Button.html",longname:"Button"},{docpage:"Phaser.Cache.html",longname:"Cache"},{docpage:"Phaser.Camera.html",longname:"Camera"},{docpage:"Phaser.Canvas.html",longname:"Canvas"},{docpage:"Phaser.CanvasPool.html",longname:"CanvasPool"},{docpage:"Phaser.Circle.html",longname:"Circle"},{docpage:"Phaser.Color.html",longname:"Color"},{docpage:"Phaser.Component.Angle.html",longname:"Angle"},{docpage:"Phaser.Component.Animation.html",longname:"Animation"},{docpage:"Phaser.Component.AutoCull.html",longname:"AutoCull"},{docpage:"Phaser.Component.Bounds.html",longname:"Bounds"},{docpage:"Phaser.Component.BringToTop.html",longname:"BringToTop"},{docpage:"Phaser.Component.Core.html",longname:"Core"},{docpage:"Phaser.Component.Crop.html",longname:"Crop"},{docpage:"Phaser.Component.Delta.html",longname:"Delta"},{docpage:"Phaser.Component.Destroy.html",longname:"Destroy"},{docpage:"Phaser.Component.FixedToCamera.html",longname:"FixedToCamera"},{docpage:"Phaser.Component.Health.html",longname:"Health"},{docpage:"Phaser.Component.InCamera.html",longname:"InCamera"},{docpage:"Phaser.Component.InputEnabled.html",longname:"InputEnabled"},{docpage:"Phaser.Component.InWorld.html",longname:"InWorld"},{docpage:"Phaser.Component.LifeSpan.html",longname:"LifeSpan"},{docpage:"Phaser.Component.LoadTexture.html",longname:"LoadTexture"},{docpage:"Phaser.Component.Overlap.html",longname:"Overlap"},{docpage:"Phaser.Component.PhysicsBody.html",longname:"PhysicsBody"},{docpage:"Phaser.Component.Reset.html",longname:"Reset"},{docpage:"Phaser.Component.ScaleMinMax.html",longname:"ScaleMinMax"},{docpage:"Phaser.Component.Smoothed.html",longname:"Smoothed"},{docpage:"Phaser.Create.html",longname:"Create"},{docpage:"Phaser.Creature.html",longname:"Creature"},{docpage:"Phaser.Device.html",longname:"Device"},{docpage:"Phaser.DeviceButton.html",longname:"DeviceButton"},{docpage:"Phaser.DOM.html",longname:"DOM"},{docpage:"Phaser.Easing.html",longname:"Easing"},{docpage:"Phaser.Easing.Back.html",longname:"Back"},{docpage:"Phaser.Easing.Bounce.html",longname:"Bounce"},{docpage:"Phaser.Easing.Circular.html",longname:"Circular"},{docpage:"Phaser.Easing.Cubic.html",longname:"Cubic"},{docpage:"Phaser.Easing.Elastic.html",longname:"Elastic"},{docpage:"Phaser.Easing.Exponential.html",longname:"Exponential"},{docpage:"Phaser.Easing.Linear.html",longname:"Linear"},{docpage:"Phaser.Easing.Quadratic.html",longname:"Quadratic"},{docpage:"Phaser.Easing.Quartic.html",longname:"Quartic"},{docpage:"Phaser.Easing.Quintic.html",longname:"Quintic"},{docpage:"Phaser.Easing.Sinusoidal.html",longname:"Sinusoidal"},{docpage:"Phaser.Ellipse.html",longname:"Ellipse"},{docpage:"Phaser.Events.html",longname:"Events"},{docpage:"Phaser.Filter.html",longname:"Filter"},{docpage:"Phaser.FlexGrid.html",longname:"FlexGrid"},{docpage:"Phaser.FlexLayer.html",longname:"FlexLayer"},{docpage:"Phaser.Frame.html",longname:"Frame"},{docpage:"Phaser.FrameData.html",longname:"FrameData"},{docpage:"Phaser.Game.html",longname:"Game"},{docpage:"Phaser.GameObjectCreator.html",longname:"GameObjectCreator"},{docpage:"Phaser.GameObjectFactory.html",longname:"GameObjectFactory"},{docpage:"Phaser.Gamepad.html",longname:"Gamepad"},{docpage:"Phaser.Graphics.html",longname:"Graphics"},{docpage:"Phaser.GraphicsData.html",longname:"GraphicsData"},{docpage:"Phaser.Group.html",longname:"Group"},{docpage:"Phaser.Hermite.html",longname:"Hermite"},{docpage:"Phaser.Image.html",longname:"Image"},{docpage:"Phaser.ImageCollection.html",longname:"ImageCollection"},{docpage:"Phaser.Input.html",longname:"Input"},{docpage:"Phaser.InputHandler.html",longname:"InputHandler"},{docpage:"Phaser.Key.html",longname:"Key"},{docpage:"Phaser.Keyboard.html",longname:"Keyboard"},{docpage:"Phaser.KeyCode.html",longname:"KeyCode"},{docpage:"Phaser.Line.html",longname:"Line"},{docpage:"Phaser.LinkedList.html",longname:"LinkedList"},{docpage:"Phaser.Loader.html",longname:"Loader"},{docpage:"Phaser.LoaderParser.html",longname:"LoaderParser"},{docpage:"Phaser.Math.html",longname:"Math"},{docpage:"Phaser.Matrix.html",longname:"Matrix"},{docpage:"Phaser.Mouse.html",longname:"Mouse"},{docpage:"Phaser.MouseWheel.html",longname:"MouseWheel"},{docpage:"Phaser.MSPointer.html",longname:"MSPointer"},{docpage:"Phaser.Particle.html",longname:"Particle"},{docpage:"Phaser.Particles.html",longname:"Particles"},{docpage:"Phaser.Particles.Arcade.html",longname:"Arcade"},{docpage:"Phaser.Particles.Arcade.Emitter.html",longname:"Emitter"},{docpage:"Phaser.Path.html",longname:"Path"},{docpage:"Phaser.PathFollower.html",longname:"PathFollower"},{docpage:"Phaser.PathPoint.html",longname:"PathPoint"},{docpage:"Phaser.Physics.html",longname:"Physics"},{docpage:"Phaser.Physics.Arcade.html",longname:"Arcade"},{docpage:"Phaser.Physics.Arcade.Body.html",longname:"Body"},{docpage:"Phaser.Physics.Arcade.TilemapCollision.html",longname:"TilemapCollision"},{docpage:"Phaser.Physics.Ninja.html",longname:"Ninja"},{docpage:"Phaser.Physics.Ninja.AABB.html",longname:"AABB"},{docpage:"Phaser.Physics.Ninja.Body.html",longname:"Body"},{docpage:"Phaser.Physics.Ninja.Circle.html",longname:"Circle"},{docpage:"Phaser.Physics.Ninja.Tile.html",longname:"Tile"},{docpage:"Phaser.Physics.P2.html",longname:"P2"},{docpage:"Phaser.Physics.P2.Body.html",longname:"Body"},{docpage:"Phaser.Physics.P2.BodyDebug.html",longname:"BodyDebug"},{docpage:"Phaser.Physics.P2.CollisionGroup.html",longname:"CollisionGroup"},{docpage:"Phaser.Physics.P2.ContactMaterial.html",longname:"ContactMaterial"},{docpage:"Phaser.Physics.P2.DistanceConstraint.html",longname:"DistanceConstraint"},{docpage:"Phaser.Physics.P2.FixtureList.html",longname:"FixtureList"},{docpage:"Phaser.Physics.P2.GearConstraint.html",longname:"GearConstraint"},{docpage:"Phaser.Physics.P2.InversePointProxy.html",longname:"InversePointProxy"},{docpage:"Phaser.Physics.P2.LockConstraint.html",longname:"LockConstraint"},{docpage:"Phaser.Physics.P2.Material.html",longname:"Material"},{docpage:"Phaser.Physics.P2.PointProxy.html",longname:"PointProxy"},{docpage:"Phaser.Physics.P2.PrismaticConstraint.html",longname:"PrismaticConstraint"},{docpage:"Phaser.Physics.P2.RevoluteConstraint.html",longname:"RevoluteConstraint"},{docpage:"Phaser.Physics.P2.RotationalSpring.html",longname:"RotationalSpring"},{docpage:"Phaser.Physics.P2.Spring.html",longname:"Spring"},{docpage:"Phaser.Plugin.html",longname:"Plugin"},{docpage:"Phaser.Plugin.PathManager.html",longname:"PathManager"},{docpage:"Phaser.PluginManager.html",longname:"PluginManager"},{docpage:"Phaser.Point.html",longname:"Point"},{docpage:"Phaser.Pointer.html",longname:"Pointer"},{docpage:"Phaser.PointerLock.html",longname:"PointerLock"},{docpage:"Phaser.PointerMode.html",longname:"PointerMode"},{docpage:"Phaser.Polygon.html",longname:"Polygon"},{docpage:"Phaser.QuadTree.html",longname:"QuadTree"},{docpage:"Phaser.RandomDataGenerator.html",longname:"RandomDataGenerator"},{docpage:"Phaser.Rectangle.html",longname:"Rectangle"},{docpage:"Phaser.RenderTexture.html",longname:"RenderTexture"},{docpage:"Phaser.RequestAnimationFrame.html",longname:"RequestAnimationFrame"},{docpage:"Phaser.RetroFont.html",longname:"RetroFont"},{docpage:"Phaser.Rope.html",longname:"Rope"},{docpage:"Phaser.RoundedRectangle.html",longname:"RoundedRectangle"},{docpage:"Phaser.ScaleManager.html",longname:"ScaleManager"},{docpage:"Phaser.Signal.html",longname:"Signal"},{docpage:"Phaser.SignalBinding.html",longname:"SignalBinding"},{docpage:"Phaser.SinglePad.html",longname:"SinglePad"},{docpage:"Phaser.Sound.html",longname:"Sound"},{docpage:"Phaser.SoundManager.html",longname:"SoundManager"},{docpage:"Phaser.Sprite.html",longname:"Sprite"},{docpage:"Phaser.SpriteBatch.html",longname:"SpriteBatch"},{docpage:"Phaser.Stage.html",longname:"Stage"},{docpage:"Phaser.State.html",longname:"State"},{docpage:"Phaser.StateManager.html",longname:"StateManager"},{docpage:"Phaser.Text.html",longname:"Text"},{docpage:"Phaser.Tile.html",longname:"Tile"},{docpage:"Phaser.Tilemap.html",longname:"Tilemap"},{docpage:"Phaser.TilemapLayer.html",longname:"TilemapLayer"},{docpage:"Phaser.TilemapParser.html",longname:"TilemapParser"},{docpage:"Phaser.Tileset.html",longname:"Tileset"},{docpage:"Phaser.TileSprite.html",longname:"TileSprite"},{docpage:"Phaser.Time.html",longname:"Time"},{docpage:"Phaser.Timer.html",longname:"Timer"},{docpage:"Phaser.TimerEvent.html",longname:"TimerEvent"},{docpage:"Phaser.Touch.html",longname:"Touch"},{docpage:"Phaser.Tween.html",longname:"Tween"},{docpage:"Phaser.TweenData.html",longname:"TweenData"},{docpage:"Phaser.TweenManager.html",longname:"TweenManager"},{docpage:"Phaser.Utils.html",longname:"Utils"},{docpage:"Phaser.Utils.Debug.html",longname:"Debug"},{docpage:"Phaser.Video.html",longname:"Video"},{docpage:"Phaser.Weapon.html",longname:"Weapon"},{docpage:"Phaser.World.html",longname:"World"},{docpage:"PIXI.BaseTexture.html",longname:"BaseTexture"},{docpage:"PIXI.CanvasBuffer.html",longname:"CanvasBuffer"},{docpage:"PIXI.CanvasGraphics.html",longname:"CanvasGraphics"},{docpage:"PIXI.CanvasMaskManager.html",longname:"CanvasMaskManager"},{docpage:"PIXI.CanvasRenderer.html",longname:"CanvasRenderer"},{docpage:"PIXI.CanvasTinter.html",longname:"CanvasTinter"},{docpage:"PIXI.ComplexPrimitiveShader.html",longname:"ComplexPrimitiveShader"},{docpage:"PIXI.DisplayObject.html",longname:"DisplayObject"},{docpage:"PIXI.DisplayObjectContainer.html",longname:"DisplayObjectContainer"},{docpage:"PIXI.FilterTexture.html",longname:"FilterTexture"},{docpage:"PIXI.PixiFastShader.html",longname:"PixiFastShader"},{docpage:"PIXI.PixiShader.html",longname:"PixiShader"},{docpage:"PIXI.PrimitiveShader.html",longname:"PrimitiveShader"},{docpage:"PIXI.Sprite.html",longname:"Sprite"},{docpage:"PIXI.StripShader.html",longname:"StripShader"},{docpage:"PIXI.Texture.html",longname:"Texture"},{docpage:"PIXI.WebGLBlendModeManager.html",longname:"WebGLBlendModeManager"},{docpage:"PIXI.WebGLFastSpriteBatch.html",longname:"WebGLFastSpriteBatch"},{docpage:"PIXI.WebGLFilterManager.html",longname:"WebGLFilterManager"},{docpage:"PIXI.WebGLRenderer.html",longname:"WebGLRenderer"}]},{type:"global",data:[{longname:"Global",docpage:"global.html"}]}];var phaserCEDict = {Data:Data};
+
     /* webviews\components\Sidebar.svelte generated by Svelte v3.44.2 */
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[13] = list[i];
+    	child_ctx[15] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
-    	child_ctx[18] = i;
+    	child_ctx[18] = list[i];
+    	child_ctx[20] = i;
     	return child_ctx;
     }
 
-    // (136:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (126:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11460,7 +11462,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr(div, "class", "dropdown-menu bg-secondary svelte-1m5olh2");
+    			attr(div, "class", "dropdown-menu bg-secondary svelte-17nt4bs");
     			attr(div, "id", "autocomplete");
     		},
     		m(target, anchor) {
@@ -11470,10 +11472,10 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
 
-    			/*div_binding*/ ctx[11](div);
+    			/*div_binding*/ ctx[13](div);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*Array, searchResults, handleLinkClick*/ 66) {
+    			if (dirty & /*Array, searchResults, handleLinkClick*/ 130) {
     				each_value = /*searchResults*/ ctx[1];
     				let i;
 
@@ -11499,15 +11501,15 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(div);
     			destroy_each(each_blocks, detaching);
-    			/*div_binding*/ ctx[11](null);
+    			/*div_binding*/ ctx[13](null);
     		}
     	};
     }
 
-    // (146:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (136:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
-    	let t_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].name + "";
+    	let t_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].name + "";
     	let t;
     	let a_data_value_longname_value;
     	let a_data_value_memberof_value;
@@ -11519,32 +11521,32 @@ var app = (function () {
     		c() {
     			a = element("a");
     			t = text(t_value);
-    			attr(a, "class", "dropdown-item text-white svelte-1m5olh2");
-    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].longname);
-    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].memberof);
-    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[13].type);
+    			attr(a, "class", "dropdown-item text-white svelte-17nt4bs");
+    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].longname);
+    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].memberof);
+    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[15].type);
     		},
     		m(target, anchor) {
     			insert(target, a, anchor);
     			append(a, t);
 
     			if (!mounted) {
-    				dispose = listen(a, "click", /*handleLinkClick*/ ctx[6]);
+    				dispose = listen(a, "click", /*handleLinkClick*/ ctx[7]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].name + "")) set_data(t, t_value);
+    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].name + "")) set_data(t, t_value);
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].longname)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].longname)) {
     				attr(a, "data-value-longname", a_data_value_longname_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[13].data[/*i*/ ctx[18]].memberof)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].memberof)) {
     				attr(a, "data-value-memberof", a_data_value_memberof_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[13].type)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[15].type)) {
     				attr(a, "data-value-type", a_data_value_type_value);
     			}
     		},
@@ -11556,18 +11558,18 @@ var app = (function () {
     	};
     }
 
-    // (142:14) {#each searchResults as resType}
+    // (132:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
-    	let t0_value = /*resType*/ ctx[13].type.charAt(0).toUpperCase() + /*resType*/ ctx[13].type.slice(1) + "";
+    	let t0_value = /*resType*/ ctx[15].type.charAt(0).toUpperCase() + /*resType*/ ctx[15].type.slice(1) + "";
     	let t0;
     	let t1;
     	let t2;
     	let div;
 
-    	let each_value_1 = Array(/*resType*/ ctx[13].data.length > 3
+    	let each_value_1 = Array(/*resType*/ ctx[15].data.length > 3
     	? 3
-    	: /*resType*/ ctx[13].data.length);
+    	: /*resType*/ ctx[15].data.length);
 
     	let each_blocks = [];
 
@@ -11587,8 +11589,8 @@ var app = (function () {
 
     			t2 = space();
     			div = element("div");
-    			attr(h6, "class", "dropdown-header text-white svelte-1m5olh2");
-    			attr(div, "class", "dropdown-divider svelte-1m5olh2");
+    			attr(h6, "class", "dropdown-header text-white svelte-17nt4bs");
+    			attr(div, "class", "dropdown-divider svelte-17nt4bs");
     		},
     		m(target, anchor) {
     			insert(target, h6, anchor);
@@ -11603,12 +11605,12 @@ var app = (function () {
     			insert(target, div, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[13].type.charAt(0).toUpperCase() + /*resType*/ ctx[13].type.slice(1) + "")) set_data(t0, t0_value);
+    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[15].type.charAt(0).toUpperCase() + /*resType*/ ctx[15].type.slice(1) + "")) set_data(t0, t0_value);
 
-    			if (dirty & /*searchResults, handleLinkClick*/ 66) {
-    				each_value_1 = Array(/*resType*/ ctx[13].data.length > 3
+    			if (dirty & /*searchResults, handleLinkClick*/ 130) {
+    				each_value_1 = Array(/*resType*/ ctx[15].data.length > 3
     				? 3
-    				: /*resType*/ ctx[13].data.length);
+    				: /*resType*/ ctx[15].data.length);
 
     				let i;
 
@@ -11688,7 +11690,7 @@ var app = (function () {
     			t2 = space();
     			div1 = element("div");
     			button = element("button");
-    			button.textContent = "Phaser 3.5+";
+    			button.textContent = "Phaser 3";
     			t4 = space();
     			ul = element("ul");
     			li0 = element("li");
@@ -11706,35 +11708,37 @@ var app = (function () {
     			div8 = element("div");
     			div7 = element("div");
     			div6 = element("div");
-    			attr(div0, "class", "card-header svelte-1m5olh2");
+    			attr(div0, "class", "card-header svelte-17nt4bs");
     			attr(input, "type", "text");
-    			attr(input, "class", "form-control bg-dark text-white svelte-1m5olh2");
+    			attr(input, "class", "form-control bg-dark text-white svelte-17nt4bs");
     			attr(input, "placeholder", "Search Docs...");
     			attr(button, "id", "version-btn");
-    			attr(button, "class", "btn btn-outline-light btn-dark dropdown-toggle svelte-1m5olh2");
+    			attr(button, "contenteditable", "true");
+    			attr(button, "class", "btn btn-outline-light btn-dark dropdown-toggle svelte-17nt4bs");
     			attr(button, "type", "button");
     			attr(button, "data-bs-toggle", "dropdown");
     			attr(button, "aria-expanded", "false");
-    			attr(a0, "class", "dropdown-item svelte-1m5olh2");
+    			if (/*searchVersion*/ ctx[5] === void 0) add_render_callback(() => /*button_input_handler*/ ctx[9].call(button));
+    			attr(a0, "class", "dropdown-item svelte-17nt4bs");
     			attr(a0, "href", "#");
-    			attr(li0, "class", "svelte-1m5olh2");
-    			attr(a1, "class", "dropdown-item svelte-1m5olh2");
+    			attr(li0, "class", "svelte-17nt4bs");
+    			attr(a1, "class", "dropdown-item svelte-17nt4bs");
     			attr(a1, "href", "#");
-    			attr(li1, "class", "svelte-1m5olh2");
-    			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end svelte-1m5olh2");
+    			attr(li1, "class", "svelte-17nt4bs");
+    			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end bg-secondary svelte-17nt4bs");
     			set_style(ul, "display", "none");
-    			attr(div1, "class", "input-group-append svelte-1m5olh2");
-    			attr(div2, "class", "input-group mb-3 svelte-1m5olh2");
-    			attr(form, "class", "form-inline svelte-1m5olh2");
-    			attr(div3, "class", "card-body svelte-1m5olh2");
-    			attr(div4, "class", "card bg-dark svelte-1m5olh2");
-    			attr(div5, "class", "container text-white svelte-1m5olh2");
-    			attr(br, "class", "svelte-1m5olh2");
-    			attr(div6, "class", "card-body svelte-1m5olh2");
+    			attr(div1, "class", "input-group-append svelte-17nt4bs");
+    			attr(div2, "class", "input-group mb-3 svelte-17nt4bs");
+    			attr(form, "class", "form-inline svelte-17nt4bs");
+    			attr(div3, "class", "card-body svelte-17nt4bs");
+    			attr(div4, "class", "card bg-dark svelte-17nt4bs");
+    			attr(div5, "class", "container text-white svelte-17nt4bs");
+    			attr(br, "class", "svelte-17nt4bs");
+    			attr(div6, "class", "card-body svelte-17nt4bs");
     			attr(div6, "contenteditable", "true");
-    			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[12].call(div6));
-    			attr(div7, "class", "card bg-dark svelte-1m5olh2");
-    			attr(div8, "class", "container svelte-1m5olh2");
+    			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[14].call(div6));
+    			attr(div7, "class", "card bg-dark svelte-17nt4bs");
+    			attr(div8, "class", "container svelte-17nt4bs");
     			attr(div8, "id", "results");
 
     			attr(div8, "style", div8_style_value = /*searchContent*/ ctx[4].length > 0
@@ -11754,6 +11758,11 @@ var app = (function () {
     			append(div2, t2);
     			append(div2, div1);
     			append(div1, button);
+
+    			if (/*searchVersion*/ ctx[5] !== void 0) {
+    				button.textContent = /*searchVersion*/ ctx[5];
+    			}
+
     			append(div1, t4);
     			append(div1, ul);
     			append(ul, li0);
@@ -11778,13 +11787,14 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler*/ ctx[7]),
-    					listen(input, "input", /*handleInput*/ ctx[5]),
-    					listen(button, "click", /*click_handler*/ ctx[8]),
-    					listen(a0, "click", /*click_handler_1*/ ctx[9]),
-    					listen(a1, "click", /*click_handler_2*/ ctx[10]),
+    					listen(input, "input", /*input_input_handler*/ ctx[8]),
+    					listen(input, "input", /*handleInput*/ ctx[6]),
+    					listen(button, "input", /*button_input_handler*/ ctx[9]),
+    					listen(button, "click", /*click_handler*/ ctx[10]),
+    					listen(a0, "click", /*click_handler_1*/ ctx[11]),
+    					listen(a1, "click", /*click_handler_2*/ ctx[12]),
     					listen(form, "submit", submit_handler),
-    					listen(div6, "input", /*div6_input_handler*/ ctx[12])
+    					listen(div6, "input", /*div6_input_handler*/ ctx[14])
     				];
 
     				mounted = true;
@@ -11793,6 +11803,10 @@ var app = (function () {
     		p(ctx, [dirty]) {
     			if (dirty & /*searchVal*/ 1 && input.value !== /*searchVal*/ ctx[0]) {
     				set_input_value(input, /*searchVal*/ ctx[0]);
+    			}
+
+    			if (dirty & /*searchVersion*/ 32 && /*searchVersion*/ ctx[5] !== button.textContent) {
+    				button.textContent = /*searchVersion*/ ctx[5];
     			}
 
     			if (/*searchResults*/ ctx[1].length > 0 && /*searchVal*/ ctx[0].length > 0 && !/*searchValSelected*/ ctx[3]) {
@@ -11865,6 +11879,8 @@ var app = (function () {
     };
 
     function instance($$self, $$props, $$invalidate) {
+    	console.log(phaserCEDict);
+
     	onMount(() => {
     		//window.$ = $;
     		window.jQuery = jQuery;
@@ -11877,6 +11893,7 @@ var app = (function () {
     	let searchDropDown;
     	let searchValSelected = false;
     	let searchContent = "";
+    	let searchVersion = "Phaser 3";
 
     	// When searchVal changes then perform a get request to the phaser api
     	function handleInput(e) {
@@ -11886,9 +11903,19 @@ var app = (function () {
     		}
 
     		let getRequest = async function (searchKey) {
-    			const response = await fetch("https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2");
-    			const body = await response.text();
-    			return body;
+    			console.log(searchVersion);
+
+    			switch (searchVersion) {
+    				case "Phaser 3":
+    					const response = await fetch("https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2");
+    					const body = await response.text();
+    					return body;
+    				case "Phaser CE":
+    					console.log(phaserCEDict);
+    					return "";
+    				default:
+    					return "";
+    			}
     		};
 
     		console.log(e.target.value);
@@ -11935,9 +11962,14 @@ var app = (function () {
     		$$invalidate(0, searchVal);
     	}
 
+    	function button_input_handler() {
+    		searchVersion = this.textContent;
+    		$$invalidate(5, searchVersion);
+    	}
+
     	const click_handler = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle();
-    	const click_handler_1 = () => window.jQuery.default('#version-btn').text('Phaser 3').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
-    	const click_handler_2 = () => window.jQuery.default('#version-btn').text('Phaser CE').then(window.jQuery.default('.dropdown-menu.dropdown-menu-end').toggle());
+    	const click_handler_1 = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then($$invalidate(5, searchVersion = "Phaser 3"));
+    	const click_handler_2 = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then($$invalidate(5, searchVersion = "Phaser CE"));
 
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
@@ -11957,9 +11989,11 @@ var app = (function () {
     		searchDropDown,
     		searchValSelected,
     		searchContent,
+    		searchVersion,
     		handleInput,
     		handleLinkClick,
     		input_input_handler,
+    		button_input_handler,
     		click_handler,
     		click_handler_1,
     		click_handler_2,
