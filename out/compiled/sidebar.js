@@ -11427,24 +11427,24 @@ var app = (function () {
         };
     }
 
-    const Data=[{type:"namespaces",data:[{longname:"Phaser",docpage:"Phaser.html"},{longname:"PhaserGlobal",docpage:"PhaserGlobal.html"},{longname:"PIXI",docpage:"PIXI.html"}]},{type:"classes",data:[{docpage:"CreatureShader.html",longname:"CreatureShader"},{docpage:"EarCut.html",longname:"EarCut"},{docpage:"Event.html",longname:"Event"},{docpage:"EventTarget.html",longname:"EventTarget"},{docpage:"Phaser.Animation.html",longname:"Animation"},{docpage:"Phaser.AnimationManager.html",longname:"AnimationManager"},{docpage:"Phaser.AnimationParser.html",longname:"AnimationParser"},{docpage:"Phaser.ArraySet.html",longname:"ArraySet"},{docpage:"Phaser.ArrayUtils.html",longname:"ArrayUtils"},{docpage:"Phaser.AudioSprite.html",longname:"AudioSprite"},{docpage:"Phaser.BitmapData.html",longname:"BitmapData"},{docpage:"Phaser.BitmapText.html",longname:"BitmapText"},{docpage:"Phaser.Bullet.html",longname:"Bullet"},{docpage:"Phaser.Button.html",longname:"Button"},{docpage:"Phaser.Cache.html",longname:"Cache"},{docpage:"Phaser.Camera.html",longname:"Camera"},{docpage:"Phaser.Canvas.html",longname:"Canvas"},{docpage:"Phaser.CanvasPool.html",longname:"CanvasPool"},{docpage:"Phaser.Circle.html",longname:"Circle"},{docpage:"Phaser.Color.html",longname:"Color"},{docpage:"Phaser.Component.Angle.html",longname:"Angle"},{docpage:"Phaser.Component.Animation.html",longname:"Animation"},{docpage:"Phaser.Component.AutoCull.html",longname:"AutoCull"},{docpage:"Phaser.Component.Bounds.html",longname:"Bounds"},{docpage:"Phaser.Component.BringToTop.html",longname:"BringToTop"},{docpage:"Phaser.Component.Core.html",longname:"Core"},{docpage:"Phaser.Component.Crop.html",longname:"Crop"},{docpage:"Phaser.Component.Delta.html",longname:"Delta"},{docpage:"Phaser.Component.Destroy.html",longname:"Destroy"},{docpage:"Phaser.Component.FixedToCamera.html",longname:"FixedToCamera"},{docpage:"Phaser.Component.Health.html",longname:"Health"},{docpage:"Phaser.Component.InCamera.html",longname:"InCamera"},{docpage:"Phaser.Component.InputEnabled.html",longname:"InputEnabled"},{docpage:"Phaser.Component.InWorld.html",longname:"InWorld"},{docpage:"Phaser.Component.LifeSpan.html",longname:"LifeSpan"},{docpage:"Phaser.Component.LoadTexture.html",longname:"LoadTexture"},{docpage:"Phaser.Component.Overlap.html",longname:"Overlap"},{docpage:"Phaser.Component.PhysicsBody.html",longname:"PhysicsBody"},{docpage:"Phaser.Component.Reset.html",longname:"Reset"},{docpage:"Phaser.Component.ScaleMinMax.html",longname:"ScaleMinMax"},{docpage:"Phaser.Component.Smoothed.html",longname:"Smoothed"},{docpage:"Phaser.Create.html",longname:"Create"},{docpage:"Phaser.Creature.html",longname:"Creature"},{docpage:"Phaser.Device.html",longname:"Device"},{docpage:"Phaser.DeviceButton.html",longname:"DeviceButton"},{docpage:"Phaser.DOM.html",longname:"DOM"},{docpage:"Phaser.Easing.html",longname:"Easing"},{docpage:"Phaser.Easing.Back.html",longname:"Back"},{docpage:"Phaser.Easing.Bounce.html",longname:"Bounce"},{docpage:"Phaser.Easing.Circular.html",longname:"Circular"},{docpage:"Phaser.Easing.Cubic.html",longname:"Cubic"},{docpage:"Phaser.Easing.Elastic.html",longname:"Elastic"},{docpage:"Phaser.Easing.Exponential.html",longname:"Exponential"},{docpage:"Phaser.Easing.Linear.html",longname:"Linear"},{docpage:"Phaser.Easing.Quadratic.html",longname:"Quadratic"},{docpage:"Phaser.Easing.Quartic.html",longname:"Quartic"},{docpage:"Phaser.Easing.Quintic.html",longname:"Quintic"},{docpage:"Phaser.Easing.Sinusoidal.html",longname:"Sinusoidal"},{docpage:"Phaser.Ellipse.html",longname:"Ellipse"},{docpage:"Phaser.Events.html",longname:"Events"},{docpage:"Phaser.Filter.html",longname:"Filter"},{docpage:"Phaser.FlexGrid.html",longname:"FlexGrid"},{docpage:"Phaser.FlexLayer.html",longname:"FlexLayer"},{docpage:"Phaser.Frame.html",longname:"Frame"},{docpage:"Phaser.FrameData.html",longname:"FrameData"},{docpage:"Phaser.Game.html",longname:"Game"},{docpage:"Phaser.GameObjectCreator.html",longname:"GameObjectCreator"},{docpage:"Phaser.GameObjectFactory.html",longname:"GameObjectFactory"},{docpage:"Phaser.Gamepad.html",longname:"Gamepad"},{docpage:"Phaser.Graphics.html",longname:"Graphics"},{docpage:"Phaser.GraphicsData.html",longname:"GraphicsData"},{docpage:"Phaser.Group.html",longname:"Group"},{docpage:"Phaser.Hermite.html",longname:"Hermite"},{docpage:"Phaser.Image.html",longname:"Image"},{docpage:"Phaser.ImageCollection.html",longname:"ImageCollection"},{docpage:"Phaser.Input.html",longname:"Input"},{docpage:"Phaser.InputHandler.html",longname:"InputHandler"},{docpage:"Phaser.Key.html",longname:"Key"},{docpage:"Phaser.Keyboard.html",longname:"Keyboard"},{docpage:"Phaser.KeyCode.html",longname:"KeyCode"},{docpage:"Phaser.Line.html",longname:"Line"},{docpage:"Phaser.LinkedList.html",longname:"LinkedList"},{docpage:"Phaser.Loader.html",longname:"Loader"},{docpage:"Phaser.LoaderParser.html",longname:"LoaderParser"},{docpage:"Phaser.Math.html",longname:"Math"},{docpage:"Phaser.Matrix.html",longname:"Matrix"},{docpage:"Phaser.Mouse.html",longname:"Mouse"},{docpage:"Phaser.MouseWheel.html",longname:"MouseWheel"},{docpage:"Phaser.MSPointer.html",longname:"MSPointer"},{docpage:"Phaser.Particle.html",longname:"Particle"},{docpage:"Phaser.Particles.html",longname:"Particles"},{docpage:"Phaser.Particles.Arcade.html",longname:"Arcade"},{docpage:"Phaser.Particles.Arcade.Emitter.html",longname:"Emitter"},{docpage:"Phaser.Path.html",longname:"Path"},{docpage:"Phaser.PathFollower.html",longname:"PathFollower"},{docpage:"Phaser.PathPoint.html",longname:"PathPoint"},{docpage:"Phaser.Physics.html",longname:"Physics"},{docpage:"Phaser.Physics.Arcade.html",longname:"Arcade"},{docpage:"Phaser.Physics.Arcade.Body.html",longname:"Body"},{docpage:"Phaser.Physics.Arcade.TilemapCollision.html",longname:"TilemapCollision"},{docpage:"Phaser.Physics.Ninja.html",longname:"Ninja"},{docpage:"Phaser.Physics.Ninja.AABB.html",longname:"AABB"},{docpage:"Phaser.Physics.Ninja.Body.html",longname:"Body"},{docpage:"Phaser.Physics.Ninja.Circle.html",longname:"Circle"},{docpage:"Phaser.Physics.Ninja.Tile.html",longname:"Tile"},{docpage:"Phaser.Physics.P2.html",longname:"P2"},{docpage:"Phaser.Physics.P2.Body.html",longname:"Body"},{docpage:"Phaser.Physics.P2.BodyDebug.html",longname:"BodyDebug"},{docpage:"Phaser.Physics.P2.CollisionGroup.html",longname:"CollisionGroup"},{docpage:"Phaser.Physics.P2.ContactMaterial.html",longname:"ContactMaterial"},{docpage:"Phaser.Physics.P2.DistanceConstraint.html",longname:"DistanceConstraint"},{docpage:"Phaser.Physics.P2.FixtureList.html",longname:"FixtureList"},{docpage:"Phaser.Physics.P2.GearConstraint.html",longname:"GearConstraint"},{docpage:"Phaser.Physics.P2.InversePointProxy.html",longname:"InversePointProxy"},{docpage:"Phaser.Physics.P2.LockConstraint.html",longname:"LockConstraint"},{docpage:"Phaser.Physics.P2.Material.html",longname:"Material"},{docpage:"Phaser.Physics.P2.PointProxy.html",longname:"PointProxy"},{docpage:"Phaser.Physics.P2.PrismaticConstraint.html",longname:"PrismaticConstraint"},{docpage:"Phaser.Physics.P2.RevoluteConstraint.html",longname:"RevoluteConstraint"},{docpage:"Phaser.Physics.P2.RotationalSpring.html",longname:"RotationalSpring"},{docpage:"Phaser.Physics.P2.Spring.html",longname:"Spring"},{docpage:"Phaser.Plugin.html",longname:"Plugin"},{docpage:"Phaser.Plugin.PathManager.html",longname:"PathManager"},{docpage:"Phaser.PluginManager.html",longname:"PluginManager"},{docpage:"Phaser.Point.html",longname:"Point"},{docpage:"Phaser.Pointer.html",longname:"Pointer"},{docpage:"Phaser.PointerLock.html",longname:"PointerLock"},{docpage:"Phaser.PointerMode.html",longname:"PointerMode"},{docpage:"Phaser.Polygon.html",longname:"Polygon"},{docpage:"Phaser.QuadTree.html",longname:"QuadTree"},{docpage:"Phaser.RandomDataGenerator.html",longname:"RandomDataGenerator"},{docpage:"Phaser.Rectangle.html",longname:"Rectangle"},{docpage:"Phaser.RenderTexture.html",longname:"RenderTexture"},{docpage:"Phaser.RequestAnimationFrame.html",longname:"RequestAnimationFrame"},{docpage:"Phaser.RetroFont.html",longname:"RetroFont"},{docpage:"Phaser.Rope.html",longname:"Rope"},{docpage:"Phaser.RoundedRectangle.html",longname:"RoundedRectangle"},{docpage:"Phaser.ScaleManager.html",longname:"ScaleManager"},{docpage:"Phaser.Signal.html",longname:"Signal"},{docpage:"Phaser.SignalBinding.html",longname:"SignalBinding"},{docpage:"Phaser.SinglePad.html",longname:"SinglePad"},{docpage:"Phaser.Sound.html",longname:"Sound"},{docpage:"Phaser.SoundManager.html",longname:"SoundManager"},{docpage:"Phaser.Sprite.html",longname:"Sprite"},{docpage:"Phaser.SpriteBatch.html",longname:"SpriteBatch"},{docpage:"Phaser.Stage.html",longname:"Stage"},{docpage:"Phaser.State.html",longname:"State"},{docpage:"Phaser.StateManager.html",longname:"StateManager"},{docpage:"Phaser.Text.html",longname:"Text"},{docpage:"Phaser.Tile.html",longname:"Tile"},{docpage:"Phaser.Tilemap.html",longname:"Tilemap"},{docpage:"Phaser.TilemapLayer.html",longname:"TilemapLayer"},{docpage:"Phaser.TilemapParser.html",longname:"TilemapParser"},{docpage:"Phaser.Tileset.html",longname:"Tileset"},{docpage:"Phaser.TileSprite.html",longname:"TileSprite"},{docpage:"Phaser.Time.html",longname:"Time"},{docpage:"Phaser.Timer.html",longname:"Timer"},{docpage:"Phaser.TimerEvent.html",longname:"TimerEvent"},{docpage:"Phaser.Touch.html",longname:"Touch"},{docpage:"Phaser.Tween.html",longname:"Tween"},{docpage:"Phaser.TweenData.html",longname:"TweenData"},{docpage:"Phaser.TweenManager.html",longname:"TweenManager"},{docpage:"Phaser.Utils.html",longname:"Utils"},{docpage:"Phaser.Utils.Debug.html",longname:"Debug"},{docpage:"Phaser.Video.html",longname:"Video"},{docpage:"Phaser.Weapon.html",longname:"Weapon"},{docpage:"Phaser.World.html",longname:"World"},{docpage:"PIXI.BaseTexture.html",longname:"BaseTexture"},{docpage:"PIXI.CanvasBuffer.html",longname:"CanvasBuffer"},{docpage:"PIXI.CanvasGraphics.html",longname:"CanvasGraphics"},{docpage:"PIXI.CanvasMaskManager.html",longname:"CanvasMaskManager"},{docpage:"PIXI.CanvasRenderer.html",longname:"CanvasRenderer"},{docpage:"PIXI.CanvasTinter.html",longname:"CanvasTinter"},{docpage:"PIXI.ComplexPrimitiveShader.html",longname:"ComplexPrimitiveShader"},{docpage:"PIXI.DisplayObject.html",longname:"DisplayObject"},{docpage:"PIXI.DisplayObjectContainer.html",longname:"DisplayObjectContainer"},{docpage:"PIXI.FilterTexture.html",longname:"FilterTexture"},{docpage:"PIXI.PixiFastShader.html",longname:"PixiFastShader"},{docpage:"PIXI.PixiShader.html",longname:"PixiShader"},{docpage:"PIXI.PrimitiveShader.html",longname:"PrimitiveShader"},{docpage:"PIXI.Sprite.html",longname:"Sprite"},{docpage:"PIXI.StripShader.html",longname:"StripShader"},{docpage:"PIXI.Texture.html",longname:"Texture"},{docpage:"PIXI.WebGLBlendModeManager.html",longname:"WebGLBlendModeManager"},{docpage:"PIXI.WebGLFastSpriteBatch.html",longname:"WebGLFastSpriteBatch"},{docpage:"PIXI.WebGLFilterManager.html",longname:"WebGLFilterManager"},{docpage:"PIXI.WebGLRenderer.html",longname:"WebGLRenderer"}]},{type:"global",data:[{longname:"Global",docpage:"global.html"}]}];var phaserCEDict = {Data:Data};
+    var phaserCEDict = [{type:"namespaces",data:[{longname:"Phaser",name:"Phaser",memberof:"Phaser.html"},{longname:"PhaserGlobal",name:"PhaserGlobal",memberof:"PhaserGlobal.html"},{longname:"PIXI",name:"PIXI",memberof:"PIXI.html"}]},{type:"classes",data:[{memberof:"CreatureShader.html",longname:"CreatureShader",name:"CreatureShader"},{memberof:"EarCut.html",longname:"EarCut",name:"EarCut"},{memberof:"Event.html",longname:"Event",name:"Event"},{memberof:"EventTarget.html",longname:"EventTarget",name:"EventTarget"},{memberof:"Phaser.Animation.html",longname:"Animation",name:"Animation"},{memberof:"Phaser.AnimationManager.html",longname:"AnimationManager",name:"AnimationManager"},{memberof:"Phaser.AnimationParser.html",longname:"AnimationParser",name:"AnimationParser"},{memberof:"Phaser.ArraySet.html",longname:"ArraySet",name:"ArraySet"},{memberof:"Phaser.ArrayUtils.html",longname:"ArrayUtils",name:"ArrayUtils"},{memberof:"Phaser.AudioSprite.html",longname:"AudioSprite",name:"AudioSprite"},{memberof:"Phaser.BitmapData.html",longname:"BitmapData",name:"BitmapData"},{memberof:"Phaser.BitmapText.html",longname:"BitmapText",name:"BitmapText"},{memberof:"Phaser.Bullet.html",longname:"Bullet",name:"Bullet"},{memberof:"Phaser.Button.html",longname:"Button",name:"Button"},{memberof:"Phaser.Cache.html",longname:"Cache",name:"Cache"},{memberof:"Phaser.Camera.html",longname:"Camera",name:"Camera"},{memberof:"Phaser.Canvas.html",longname:"Canvas",name:"Canvas"},{memberof:"Phaser.CanvasPool.html",longname:"CanvasPool",name:"CanvasPool"},{memberof:"Phaser.Circle.html",longname:"Circle",name:"Circle"},{memberof:"Phaser.Color.html",longname:"Color",name:"Color"},{memberof:"Phaser.Component.Angle.html",longname:"Angle",name:"Angle"},{memberof:"Phaser.Component.Animation.html",longname:"Animation",name:"Animation"},{memberof:"Phaser.Component.AutoCull.html",longname:"AutoCull",name:"AutoCull"},{memberof:"Phaser.Component.Bounds.html",longname:"Bounds",name:"Bounds"},{memberof:"Phaser.Component.BringToTop.html",longname:"BringToTop",name:"BringToTop"},{memberof:"Phaser.Component.Core.html",longname:"Core",name:"Core"},{memberof:"Phaser.Component.Crop.html",longname:"Crop",name:"Crop"},{memberof:"Phaser.Component.Delta.html",longname:"Delta",name:"Delta"},{memberof:"Phaser.Component.Destroy.html",longname:"Destroy",name:"Destroy"},{memberof:"Phaser.Component.FixedToCamera.html",longname:"FixedToCamera",name:"FixedToCamera"},{memberof:"Phaser.Component.Health.html",longname:"Health",name:"Health"},{memberof:"Phaser.Component.InCamera.html",longname:"InCamera",name:"InCamera"},{memberof:"Phaser.Component.InputEnabled.html",longname:"InputEnabled",name:"InputEnabled"},{memberof:"Phaser.Component.InWorld.html",longname:"InWorld",name:"InWorld"},{memberof:"Phaser.Component.LifeSpan.html",longname:"LifeSpan",name:"LifeSpan"},{memberof:"Phaser.Component.LoadTexture.html",longname:"LoadTexture",name:"LoadTexture"},{memberof:"Phaser.Component.Overlap.html",longname:"Overlap",name:"Overlap"},{memberof:"Phaser.Component.PhysicsBody.html",longname:"PhysicsBody",name:"PhysicsBody"},{memberof:"Phaser.Component.Reset.html",longname:"Reset",name:"Reset"},{memberof:"Phaser.Component.ScaleMinMax.html",longname:"ScaleMinMax",name:"ScaleMinMax"},{memberof:"Phaser.Component.Smoothed.html",longname:"Smoothed",name:"Smoothed"},{memberof:"Phaser.Create.html",longname:"Create",name:"Create"},{memberof:"Phaser.Creature.html",longname:"Creature",name:"Creature"},{memberof:"Phaser.Device.html",longname:"Device",name:"Device"},{memberof:"Phaser.DeviceButton.html",longname:"DeviceButton",name:"DeviceButton"},{memberof:"Phaser.DOM.html",longname:"DOM",name:"DOM"},{memberof:"Phaser.Easing.html",longname:"Easing",name:"Easing"},{memberof:"Phaser.Easing.Back.html",longname:"Back",name:"Back"},{memberof:"Phaser.Easing.Bounce.html",longname:"Bounce",name:"Bounce"},{memberof:"Phaser.Easing.Circular.html",longname:"Circular",name:"Circular"},{memberof:"Phaser.Easing.Cubic.html",longname:"Cubic",name:"Cubic"},{memberof:"Phaser.Easing.Elastic.html",longname:"Elastic",name:"Elastic"},{memberof:"Phaser.Easing.Exponential.html",longname:"Exponential",name:"Exponential"},{memberof:"Phaser.Easing.Linear.html",longname:"Linear",name:"Linear"},{memberof:"Phaser.Easing.Quadratic.html",longname:"Quadratic",name:"Quadratic"},{memberof:"Phaser.Easing.Quartic.html",longname:"Quartic",name:"Quartic"},{memberof:"Phaser.Easing.Quintic.html",longname:"Quintic",name:"Quintic"},{memberof:"Phaser.Easing.Sinusoidal.html",longname:"Sinusoidal",name:"Sinusoidal"},{memberof:"Phaser.Ellipse.html",longname:"Ellipse",name:"Ellipse"},{memberof:"Phaser.Events.html",longname:"Events",name:"Events"},{memberof:"Phaser.Filter.html",longname:"Filter",name:"Filter"},{memberof:"Phaser.FlexGrid.html",longname:"FlexGrid",name:"FlexGrid"},{memberof:"Phaser.FlexLayer.html",longname:"FlexLayer",name:"FlexLayer"},{memberof:"Phaser.Frame.html",longname:"Frame",name:"Frame"},{memberof:"Phaser.FrameData.html",longname:"FrameData",name:"FrameData"},{memberof:"Phaser.Game.html",longname:"Game",name:"Game"},{memberof:"Phaser.GameObjectCreator.html",longname:"GameObjectCreator",name:"GameObjectCreator"},{memberof:"Phaser.GameObjectFactory.html",longname:"GameObjectFactory",name:"GameObjectFactory"},{memberof:"Phaser.Gamepad.html",longname:"Gamepad",name:"Gamepad"},{memberof:"Phaser.Graphics.html",longname:"Graphics",name:"Graphics"},{memberof:"Phaser.GraphicsData.html",longname:"GraphicsData",name:"GraphicsData"},{memberof:"Phaser.Group.html",longname:"Group",name:"Group"},{memberof:"Phaser.Hermite.html",longname:"Hermite",name:"Hermite"},{memberof:"Phaser.Image.html",longname:"Image",name:"Image"},{memberof:"Phaser.ImageCollection.html",longname:"ImageCollection",name:"ImageCollection"},{memberof:"Phaser.Input.html",longname:"Input",name:"Input"},{memberof:"Phaser.InputHandler.html",longname:"InputHandler",name:"InputHandler"},{memberof:"Phaser.Key.html",longname:"Key",name:"Key"},{memberof:"Phaser.Keyboard.html",longname:"Keyboard",name:"Keyboard"},{memberof:"Phaser.KeyCode.html",longname:"KeyCode",name:"KeyCode"},{memberof:"Phaser.Line.html",longname:"Line",name:"Line"},{memberof:"Phaser.LinkedList.html",longname:"LinkedList",name:"LinkedList"},{memberof:"Phaser.Loader.html",longname:"Loader",name:"Loader"},{memberof:"Phaser.LoaderParser.html",longname:"LoaderParser",name:"LoaderParser"},{memberof:"Phaser.Math.html",longname:"Math",name:"Math"},{memberof:"Phaser.Matrix.html",longname:"Matrix",name:"Matrix"},{memberof:"Phaser.Mouse.html",longname:"Mouse",name:"Mouse"},{memberof:"Phaser.MouseWheel.html",longname:"MouseWheel",name:"MouseWheel"},{memberof:"Phaser.MSPointer.html",longname:"MSPointer",name:"MSPointer"},{memberof:"Phaser.Particle.html",longname:"Particle",name:"Particle"},{memberof:"Phaser.Particles.html",longname:"Particles",name:"Particles"},{memberof:"Phaser.Particles.Arcade.html",longname:"Arcade",name:"Arcade"},{memberof:"Phaser.Particles.Arcade.Emitter.html",longname:"Emitter",name:"Emitter"},{memberof:"Phaser.Path.html",longname:"Path",name:"Path"},{memberof:"Phaser.PathFollower.html",longname:"PathFollower",name:"PathFollower"},{memberof:"Phaser.PathPoint.html",longname:"PathPoint",name:"PathPoint"},{memberof:"Phaser.Physics.html",longname:"Physics",name:"Physics"},{memberof:"Phaser.Physics.Arcade.html",longname:"Arcade",name:"Arcade"},{memberof:"Phaser.Physics.Arcade.Body.html",longname:"Body",name:"Body"},{memberof:"Phaser.Physics.Arcade.TilemapCollision.html",longname:"TilemapCollision",name:"TilemapCollision"},{memberof:"Phaser.Physics.Ninja.html",longname:"Ninja",name:"Ninja"},{memberof:"Phaser.Physics.Ninja.AABB.html",longname:"AABB",name:"AABB"},{memberof:"Phaser.Physics.Ninja.Body.html",longname:"Body",name:"Body"},{memberof:"Phaser.Physics.Ninja.Circle.html",longname:"Circle",name:"Circle"},{memberof:"Phaser.Physics.Ninja.Tile.html",longname:"Tile",name:"Tile"},{memberof:"Phaser.Physics.P2.html",longname:"P2",name:"P2"},{memberof:"Phaser.Physics.P2.Body.html",longname:"Body",name:"Body"},{memberof:"Phaser.Physics.P2.BodyDebug.html",longname:"BodyDebug",name:"BodyDebug"},{memberof:"Phaser.Physics.P2.CollisionGroup.html",longname:"CollisionGroup",name:"CollisionGroup"},{memberof:"Phaser.Physics.P2.ContactMaterial.html",longname:"ContactMaterial",name:"ContactMaterial"},{memberof:"Phaser.Physics.P2.DistanceConstraint.html",longname:"DistanceConstraint",name:"DistanceConstraint"},{memberof:"Phaser.Physics.P2.FixtureList.html",longname:"FixtureList",name:"FixtureList"},{memberof:"Phaser.Physics.P2.GearConstraint.html",longname:"GearConstraint",name:"GearConstraint"},{memberof:"Phaser.Physics.P2.InversePointProxy.html",longname:"InversePointProxy",name:"InversePointProxy"},{memberof:"Phaser.Physics.P2.LockConstraint.html",longname:"LockConstraint",name:"LockConstraint"},{memberof:"Phaser.Physics.P2.Material.html",longname:"Material",name:"Material"},{memberof:"Phaser.Physics.P2.PointProxy.html",longname:"PointProxy",name:"PointProxy"},{memberof:"Phaser.Physics.P2.PrismaticConstraint.html",longname:"PrismaticConstraint",name:"PrismaticConstraint"},{memberof:"Phaser.Physics.P2.RevoluteConstraint.html",longname:"RevoluteConstraint",name:"RevoluteConstraint"},{memberof:"Phaser.Physics.P2.RotationalSpring.html",longname:"RotationalSpring",name:"RotationalSpring"},{memberof:"Phaser.Physics.P2.Spring.html",longname:"Spring",name:"Spring"},{memberof:"Phaser.Plugin.html",longname:"Plugin",name:"Plugin"},{memberof:"Phaser.Plugin.PathManager.html",longname:"PathManager",name:"PathManager"},{memberof:"Phaser.PluginManager.html",longname:"PluginManager",name:"PluginManager"},{memberof:"Phaser.Point.html",longname:"Point",name:"Point"},{memberof:"Phaser.Pointer.html",longname:"Pointer",name:"Pointer"},{memberof:"Phaser.PointerLock.html",longname:"PointerLock",name:"PointerLock"},{memberof:"Phaser.PointerMode.html",longname:"PointerMode",name:"PointerMode"},{memberof:"Phaser.Polygon.html",longname:"Polygon",name:"Polygon"},{memberof:"Phaser.QuadTree.html",longname:"QuadTree",name:"QuadTree"},{memberof:"Phaser.RandomDataGenerator.html",longname:"RandomDataGenerator",name:"RandomDataGenerator"},{memberof:"Phaser.Rectangle.html",longname:"Rectangle",name:"Rectangle"},{memberof:"Phaser.RenderTexture.html",longname:"RenderTexture",name:"RenderTexture"},{memberof:"Phaser.RequestAnimationFrame.html",longname:"RequestAnimationFrame",name:"RequestAnimationFrame"},{memberof:"Phaser.RetroFont.html",longname:"RetroFont",name:"RetroFont"},{memberof:"Phaser.Rope.html",longname:"Rope",name:"Rope"},{memberof:"Phaser.RoundedRectangle.html",longname:"RoundedRectangle",name:"RoundedRectangle"},{memberof:"Phaser.ScaleManager.html",longname:"ScaleManager",name:"ScaleManager"},{memberof:"Phaser.Signal.html",longname:"Signal",name:"Signal"},{memberof:"Phaser.SignalBinding.html",longname:"SignalBinding",name:"SignalBinding"},{memberof:"Phaser.SinglePad.html",longname:"SinglePad",name:"SinglePad"},{memberof:"Phaser.Sound.html",longname:"Sound",name:"Sound"},{memberof:"Phaser.SoundManager.html",longname:"SoundManager",name:"SoundManager"},{memberof:"Phaser.Sprite.html",longname:"Sprite",name:"Sprite"},{memberof:"Phaser.SpriteBatch.html",longname:"SpriteBatch",name:"SpriteBatch"},{memberof:"Phaser.Stage.html",longname:"Stage",name:"Stage"},{memberof:"Phaser.State.html",longname:"State",name:"State"},{memberof:"Phaser.StateManager.html",longname:"StateManager",name:"StateManager"},{memberof:"Phaser.Text.html",longname:"Text",name:"Text"},{memberof:"Phaser.Tile.html",longname:"Tile",name:"Tile"},{memberof:"Phaser.Tilemap.html",longname:"Tilemap",name:"Tilemap"},{memberof:"Phaser.TilemapLayer.html",longname:"TilemapLayer",name:"TilemapLayer"},{memberof:"Phaser.TilemapParser.html",longname:"TilemapParser",name:"TilemapParser"},{memberof:"Phaser.Tileset.html",longname:"Tileset",name:"Tileset"},{memberof:"Phaser.TileSprite.html",longname:"TileSprite",name:"TileSprite"},{memberof:"Phaser.Time.html",longname:"Time",name:"Time"},{memberof:"Phaser.Timer.html",longname:"Timer",name:"Timer"},{memberof:"Phaser.TimerEvent.html",longname:"TimerEvent",name:"TimerEvent"},{memberof:"Phaser.Touch.html",longname:"Touch",name:"Touch"},{memberof:"Phaser.Tween.html",longname:"Tween",name:"Tween"},{memberof:"Phaser.TweenData.html",longname:"TweenData",name:"TweenData"},{memberof:"Phaser.TweenManager.html",longname:"TweenManager",name:"TweenManager"},{memberof:"Phaser.Utils.html",longname:"Utils",name:"Utils"},{memberof:"Phaser.Utils.Debug.html",longname:"Debug",name:"Debug"},{memberof:"Phaser.Video.html",longname:"Video",name:"Video"},{memberof:"Phaser.Weapon.html",longname:"Weapon",name:"Weapon"},{memberof:"Phaser.World.html",longname:"World",name:"World"},{memberof:"PIXI.BaseTexture.html",longname:"BaseTexture",name:"BaseTexture"},{memberof:"PIXI.CanvasBuffer.html",longname:"CanvasBuffer",name:"CanvasBuffer"},{memberof:"PIXI.CanvasGraphics.html",longname:"CanvasGraphics",name:"CanvasGraphics"},{memberof:"PIXI.CanvasMaskManager.html",longname:"CanvasMaskManager",name:"CanvasMaskManager"},{memberof:"PIXI.CanvasRenderer.html",longname:"CanvasRenderer",name:"CanvasRenderer"},{memberof:"PIXI.CanvasTinter.html",longname:"CanvasTinter",name:"CanvasTinter"},{memberof:"PIXI.ComplexPrimitiveShader.html",longname:"ComplexPrimitiveShader",name:"ComplexPrimitiveShader"},{memberof:"PIXI.DisplayObject.html",longname:"DisplayObject",name:"DisplayObject"},{memberof:"PIXI.DisplayObjectContainer.html",longname:"DisplayObjectContainer",name:"DisplayObjectContainer"},{memberof:"PIXI.FilterTexture.html",longname:"FilterTexture",name:"FilterTexture"},{memberof:"PIXI.PixiFastShader.html",longname:"PixiFastShader",name:"PixiFastShader"},{memberof:"PIXI.PixiShader.html",longname:"PixiShader",name:"PixiShader"},{memberof:"PIXI.PrimitiveShader.html",longname:"PrimitiveShader",name:"PrimitiveShader"},{memberof:"PIXI.Sprite.html",longname:"Sprite",name:"Sprite"},{memberof:"PIXI.StripShader.html",longname:"StripShader",name:"StripShader"},{memberof:"PIXI.Texture.html",longname:"Texture",name:"Texture"},{memberof:"PIXI.WebGLBlendModeManager.html",longname:"WebGLBlendModeManager",name:"WebGLBlendModeManager"},{memberof:"PIXI.WebGLFastSpriteBatch.html",longname:"WebGLFastSpriteBatch",name:"WebGLFastSpriteBatch"},{memberof:"PIXI.WebGLFilterManager.html",longname:"WebGLFilterManager",name:"WebGLFilterManager"},{memberof:"PIXI.WebGLRenderer.html",longname:"WebGLRenderer",name:"WebGLRenderer"}]},{type:"global",data:[{longname:"Global",name:"Global",memberof:"global.html"}]}];
 
     /* webviews\components\Sidebar.svelte generated by Svelte v3.44.2 */
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[15] = list[i];
+    	child_ctx[16] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
-    	child_ctx[20] = i;
+    	child_ctx[19] = list[i];
+    	child_ctx[21] = i;
     	return child_ctx;
     }
 
-    // (126:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (202:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11462,7 +11462,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr(div, "class", "dropdown-menu bg-secondary svelte-17nt4bs");
+    			attr(div, "class", "dropdown-menu bg-secondary svelte-15lmnww");
     			attr(div, "id", "autocomplete");
     		},
     		m(target, anchor) {
@@ -11506,10 +11506,10 @@ var app = (function () {
     	};
     }
 
-    // (136:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (212:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
-    	let t_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].name + "";
+    	let t_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].name + "";
     	let t;
     	let a_data_value_longname_value;
     	let a_data_value_memberof_value;
@@ -11521,10 +11521,10 @@ var app = (function () {
     		c() {
     			a = element("a");
     			t = text(t_value);
-    			attr(a, "class", "dropdown-item text-white svelte-17nt4bs");
-    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].longname);
-    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].memberof);
-    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[15].type);
+    			attr(a, "class", "dropdown-item text-white svelte-15lmnww");
+    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].longname);
+    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].memberof);
+    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[16].type);
     		},
     		m(target, anchor) {
     			insert(target, a, anchor);
@@ -11536,17 +11536,17 @@ var app = (function () {
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].name + "")) set_data(t, t_value);
+    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].name + "")) set_data(t, t_value);
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].longname)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].longname)) {
     				attr(a, "data-value-longname", a_data_value_longname_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[15].data[/*i*/ ctx[20]].memberof)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].memberof)) {
     				attr(a, "data-value-memberof", a_data_value_memberof_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[15].type)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[16].type)) {
     				attr(a, "data-value-type", a_data_value_type_value);
     			}
     		},
@@ -11558,18 +11558,18 @@ var app = (function () {
     	};
     }
 
-    // (132:14) {#each searchResults as resType}
+    // (208:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
-    	let t0_value = /*resType*/ ctx[15].type.charAt(0).toUpperCase() + /*resType*/ ctx[15].type.slice(1) + "";
+    	let t0_value = /*resType*/ ctx[16].type.charAt(0).toUpperCase() + /*resType*/ ctx[16].type.slice(1) + "";
     	let t0;
     	let t1;
     	let t2;
     	let div;
 
-    	let each_value_1 = Array(/*resType*/ ctx[15].data.length > 3
+    	let each_value_1 = Array(/*resType*/ ctx[16].data.length > 3
     	? 3
-    	: /*resType*/ ctx[15].data.length);
+    	: /*resType*/ ctx[16].data.length);
 
     	let each_blocks = [];
 
@@ -11589,8 +11589,8 @@ var app = (function () {
 
     			t2 = space();
     			div = element("div");
-    			attr(h6, "class", "dropdown-header text-white svelte-17nt4bs");
-    			attr(div, "class", "dropdown-divider svelte-17nt4bs");
+    			attr(h6, "class", "dropdown-header text-white svelte-15lmnww");
+    			attr(div, "class", "dropdown-divider svelte-15lmnww");
     		},
     		m(target, anchor) {
     			insert(target, h6, anchor);
@@ -11605,12 +11605,12 @@ var app = (function () {
     			insert(target, div, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[15].type.charAt(0).toUpperCase() + /*resType*/ ctx[15].type.slice(1) + "")) set_data(t0, t0_value);
+    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[16].type.charAt(0).toUpperCase() + /*resType*/ ctx[16].type.slice(1) + "")) set_data(t0, t0_value);
 
     			if (dirty & /*searchResults, handleLinkClick*/ 130) {
-    				each_value_1 = Array(/*resType*/ ctx[15].data.length > 3
+    				each_value_1 = Array(/*resType*/ ctx[16].data.length > 3
     				? 3
-    				: /*resType*/ ctx[15].data.length);
+    				: /*resType*/ ctx[16].data.length);
 
     				let i;
 
@@ -11708,37 +11708,37 @@ var app = (function () {
     			div8 = element("div");
     			div7 = element("div");
     			div6 = element("div");
-    			attr(div0, "class", "card-header svelte-17nt4bs");
+    			attr(div0, "class", "card-header svelte-15lmnww");
     			attr(input, "type", "text");
-    			attr(input, "class", "form-control bg-dark text-white svelte-17nt4bs");
+    			attr(input, "class", "form-control bg-dark text-white svelte-15lmnww");
     			attr(input, "placeholder", "Search Docs...");
     			attr(button, "id", "version-btn");
     			attr(button, "contenteditable", "true");
-    			attr(button, "class", "btn btn-outline-light btn-dark dropdown-toggle svelte-17nt4bs");
+    			attr(button, "class", "btn btn-outline-light btn-dark dropdown-toggle svelte-15lmnww");
     			attr(button, "type", "button");
     			attr(button, "data-bs-toggle", "dropdown");
     			attr(button, "aria-expanded", "false");
     			if (/*searchVersion*/ ctx[5] === void 0) add_render_callback(() => /*button_input_handler*/ ctx[9].call(button));
-    			attr(a0, "class", "dropdown-item svelte-17nt4bs");
+    			attr(a0, "class", "dropdown-item svelte-15lmnww");
     			attr(a0, "href", "#");
-    			attr(li0, "class", "svelte-17nt4bs");
-    			attr(a1, "class", "dropdown-item svelte-17nt4bs");
+    			attr(li0, "class", "svelte-15lmnww");
+    			attr(a1, "class", "dropdown-item svelte-15lmnww");
     			attr(a1, "href", "#");
-    			attr(li1, "class", "svelte-17nt4bs");
-    			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end bg-secondary svelte-17nt4bs");
+    			attr(li1, "class", "svelte-15lmnww");
+    			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end bg-secondary svelte-15lmnww");
     			set_style(ul, "display", "none");
-    			attr(div1, "class", "input-group-append svelte-17nt4bs");
-    			attr(div2, "class", "input-group mb-3 svelte-17nt4bs");
-    			attr(form, "class", "form-inline svelte-17nt4bs");
-    			attr(div3, "class", "card-body svelte-17nt4bs");
-    			attr(div4, "class", "card bg-dark svelte-17nt4bs");
-    			attr(div5, "class", "container text-white svelte-17nt4bs");
-    			attr(br, "class", "svelte-17nt4bs");
-    			attr(div6, "class", "card-body svelte-17nt4bs");
+    			attr(div1, "class", "input-group-append svelte-15lmnww");
+    			attr(div2, "class", "input-group mb-3 svelte-15lmnww");
+    			attr(form, "class", "form-inline svelte-15lmnww");
+    			attr(div3, "class", "card-body svelte-15lmnww");
+    			attr(div4, "class", "card bg-dark svelte-15lmnww");
+    			attr(div5, "class", "container text-white svelte-15lmnww");
+    			attr(br, "class", "svelte-15lmnww");
+    			attr(div6, "class", "card-body svelte-15lmnww");
     			attr(div6, "contenteditable", "true");
     			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[14].call(div6));
-    			attr(div7, "class", "card bg-dark svelte-17nt4bs");
-    			attr(div8, "class", "container svelte-17nt4bs");
+    			attr(div7, "class", "card bg-dark svelte-15lmnww");
+    			attr(div8, "class", "container svelte-15lmnww");
     			attr(div8, "id", "results");
 
     			attr(div8, "style", div8_style_value = /*searchContent*/ ctx[4].length > 0
@@ -11861,17 +11861,24 @@ var app = (function () {
     	};
     }
 
-    function createPhaserDocSearchURL(longname, memberof, searchType) {
-    	//
-    	switch (searchType) {
-    		case "namespaces":
-    		case "classes":
-    			return longname;
-    		case "members":
-    			return memberof;
-    		default:
-    			return "";
-    	}
+    function searchPhaserCE(srch, structure) {
+    	var ret = [];
+    	var regex = new RegExp(srch.toLowerCase());
+
+    	structure.forEach(x => {
+    		console.log(x);
+    		var dataToPush = { type: x.type, data: [] };
+
+    		x.data.forEach(y => {
+    			if (y.longname.toLowerCase().match(regex) != null | y.memberof.toLowerCase().match(regex) != null) {
+    				dataToPush.data.push(y);
+    			}
+    		});
+
+    		dataToPush.data.length > 0 ? ret.push(dataToPush) : "";
+    	});
+
+    	return ret;
     }
 
     const submit_handler = e => {
@@ -11911,8 +11918,7 @@ var app = (function () {
     					const body = await response.text();
     					return body;
     				case "Phaser CE":
-    					console.log(phaserCEDict);
-    					return "";
+    					return searchPhaserCE(searchKey, phaserCEDict);
     				default:
     					return "";
     			}
@@ -11921,9 +11927,34 @@ var app = (function () {
     		console.log(e.target.value);
 
     		Promise.resolve(getRequest(String(e.target.value))).then(function (value) {
-    			$$invalidate(1, searchResults = JSON.parse(value));
-    			console.log(searchResults);
+    			switch (searchVersion) {
+    				case "Phaser 3":
+    					$$invalidate(1, searchResults = JSON.parse(value));
+    					return;
+    				case "Phaser CE":
+    					$$invalidate(1, searchResults = value);
+    					return;
+    				default:
+    					return;
+    			}
     		});
+    	}
+
+    	function createPhaserDocSearchURL(longname, memberof, searchType) {
+    		if (searchVersion == "Phaser CE") {
+    			return memberof;
+    		}
+
+    		//
+    		switch (searchType) {
+    			case "namespaces":
+    			case "classes":
+    				return longname;
+    			case "members":
+    				return memberof;
+    			default:
+    				return "";
+    		}
     	}
 
     	function handleLinkClick(e) {
@@ -11935,9 +11966,18 @@ var app = (function () {
     		console.log(longname, memberof);
 
     		let getRequest = async function (searchKey) {
-    			const response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" + searchKey + ".html");
-    			const body = await response.text();
-    			return body;
+    			switch (searchVersion) {
+    				case "Phaser 3":
+    					var response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" + searchKey + ".html");
+    					var body = await response.text();
+    					return body;
+    				case "Phaser CE":
+    					response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser-ce/master/docs/" + searchKey + (searchKey.match(/.html/) ? "" : ".html"));
+    					body = await response.text();
+    					return body;
+    				default:
+    					return "";
+    			}
     		};
 
     		Promise.resolve(getRequest(createPhaserDocSearchURL(longname, memberof, searchType))).then(function (val) {
@@ -11947,11 +11987,17 @@ var app = (function () {
     			switch (searchType) {
     				case "namespaces":
     				case "classes":
-    					$$invalidate(4, searchContent = window.jQuery.default(doc).find(".row").html());
+    					$$invalidate(4, searchContent = searchVersion == "Phaser 3"
+    					? window.jQuery.default(doc).find(".row").html()
+    					: window.jQuery.default(doc).find("#main").html());
     					break;
     				case "members":
-    					var memberHeader = window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name");
-    					$$invalidate(4, searchContent = memberHeader.html() + memberHeader.next().html());
+    					var memberHeader = searchVersion == "Phaser 3"
+    					? window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name")
+    					: window.jQuery.default(doc).find("#main").html();
+    					$$invalidate(4, searchContent = searchVersion == "Phaser 3"
+    					? memberHeader.html() + memberHeader.next().html()
+    					: memberHeader);
     					break;
     			}
     		});
@@ -11967,9 +12013,9 @@ var app = (function () {
     		$$invalidate(5, searchVersion);
     	}
 
-    	const click_handler = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle();
-    	const click_handler_1 = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then($$invalidate(5, searchVersion = "Phaser 3"));
-    	const click_handler_2 = () => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then($$invalidate(5, searchVersion = "Phaser CE"));
+    	const click_handler = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle();
+    	const click_handler_1 = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle().then($$invalidate(5, searchVersion = "Phaser 3"));
+    	const click_handler_2 = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle().then($$invalidate(5, searchVersion = "Phaser CE"));
 
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {

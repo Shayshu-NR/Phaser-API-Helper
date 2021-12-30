@@ -84,27 +84,59 @@
     }
 
     let getRequest = async function (searchKey: string): Promise<any> {
-      console.log(searchVersion)
-      switch(searchVersion) {
-        case "Phaser 3" :
+      console.log(searchVersion);
+      switch (searchVersion) {
+        case "Phaser 3":
           const response = await fetch(
-            "https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2"
+            "https://newdocs.phaser.io/api/search-bar?search=" +
+              searchKey +
+              "&version=3.55.2"
           );
           const body = await response.text();
           return body;
-        case "Phaser CE" :
-          console.log(<any>phaserCEDict);
+        case "Phaser CE":
+          return searchPhaserCE(searchKey, phaserCEDict);
+        default:
           return "";
-        default: 
-         return "";
       }
     };
 
     console.log(e.target.value);
     Promise.resolve(getRequest(String(e.target.value))).then(function (value) {
-      searchResults = JSON.parse(value);
-      console.log(searchResults);
+      switch (searchVersion) {
+        case "Phaser 3":
+          searchResults = JSON.parse(value);
+          return;
+        case "Phaser CE":
+          searchResults = value;
+          return;
+        default:
+          return;
+      }
     });
+  }
+
+  function searchPhaserCE(srch: string, structure: any) {
+    var ret = [];
+    var regex = new RegExp(srch.toLowerCase());
+    structure.forEach((x) => {
+      console.log(x);
+      var dataToPush = {
+        type: x.type,
+        data: [],
+      };
+      x.data.forEach((y) => {
+        if (
+          (y.longname.toLowerCase().match(regex) != null) |
+          (y.memberof.toLowerCase().match(regex) != null)
+        ) {
+          dataToPush.data.push(y);
+        }
+      });
+
+      dataToPush.data.length > 0 ? ret.push(dataToPush) : "";
+    });
+    return ret;
   }
 
   function createPhaserDocSearchURL(
@@ -112,6 +144,10 @@
     memberof: string,
     searchType: string
   ) {
+    if (searchVersion == "Phaser CE") {
+      return memberof;
+    }
+
     //
     switch (searchType) {
       // call ...docs/longname.html
@@ -135,39 +171,60 @@
     console.log(longname, memberof);
 
     let getRequest = async function (searchKey: string): Promise<any> {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" +
-          searchKey +
-          ".html"
-      );
-      const body = await response.text();
-      return body;
+      switch (searchVersion) {
+        case "Phaser 3":
+          var response = await fetch(
+            "https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" +
+              searchKey +
+              ".html"
+          );
+          var body = await response.text();
+          return body;
+        case "Phaser CE":
+          response = await fetch(
+            "https://raw.githubusercontent.com/photonstorm/phaser-ce/master/docs/" +
+              searchKey +
+              (searchKey.match(/.html/) ? "" : ".html")
+          );
+          body = await response.text();
+          return body;
+        default:
+          return "";
+      }
     };
 
     Promise.resolve(
       getRequest(createPhaserDocSearchURL(longname, memberof, searchType))
-      ).then(function (val) {
+    ).then(function (val) {
       var doc = document.createElement("html");
       doc.innerHTML = val;
-        
-      switch(searchType) {
-      case "namespaces":
-      case "classes":
-        searchContent = window.jQuery.default(doc).find(".row").html();
-        break;
-      case "members":
-        var memberHeader = window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name");
-        searchContent = memberHeader.html() + memberHeader.next().html();
-        break;
-      default:
-        break;
+
+      switch (searchType) {
+        case "namespaces":
+        case "classes":
+          searchContent =
+            searchVersion == "Phaser 3"
+              ? window.jQuery.default(doc).find(".row").html()
+              : window.jQuery.default(doc).find("#main").html();
+          break;
+        case "members":
+          var memberHeader =
+            searchVersion == "Phaser 3"
+              ? window.jQuery
+                  .default(doc)
+                  .find("#" + longname.split("-")[1] + ".name")
+              : window.jQuery.default(doc).find("#main").html();
+          searchContent =
+            searchVersion == "Phaser 3"
+              ? memberHeader.html() + memberHeader.next().html()
+              : memberHeader;
+          break;
+        default:
+          break;
       }
-
-
     });
   }
 </script>
-
 
 <div class="container text-white">
   <div class="card bg-dark">
@@ -188,10 +245,45 @@
             on:input={handleInput}
           />
           <div class="input-group-append">
-            <button id="version-btn" contenteditable="true" bind:textContent={searchVersion} on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle()} class="btn btn-outline-light btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Phaser 3</button>
-            <ul class="dropdown-menu-btn dropdown-menu-end bg-secondary" style="display: none;">
-              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then(searchVersion = "Phaser 3")}>Phaser 3</a></li>
-              <li><a class="dropdown-item" href="#" on:click={() => window.jQuery.default('.dropdown-menu-btn.dropdown-menu-end').toggle().then(searchVersion = "Phaser CE")}>Phaser CE</a></li>
+            <button
+              id="version-btn"
+              contenteditable="true"
+              bind:textContent={searchVersion}
+              on:click={() =>
+                window.jQuery
+                  .default(".dropdown-menu-btn.dropdown-menu-end")
+                  .toggle()}
+              class="btn btn-outline-light btn-dark dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">Phaser 3</button
+            >
+            <ul
+              class="dropdown-menu-btn dropdown-menu-end bg-secondary"
+              style="display: none;"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  on:click={() =>
+                    window.jQuery
+                      .default(".dropdown-menu-btn.dropdown-menu-end")
+                      .toggle()
+                      .then((searchVersion = "Phaser 3"))}>Phaser 3</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  on:click={() =>
+                    window.jQuery
+                      .default(".dropdown-menu-btn.dropdown-menu-end")
+                      .toggle()
+                      .then((searchVersion = "Phaser CE"))}>Phaser CE</a
+                >
+              </li>
             </ul>
           </div>
           {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
@@ -2228,7 +2320,7 @@
     margin-bottom: 1rem;
     color: #abb2bf;
     margin-inline: auto !important;
-    table-layout: fixed !important; 
+    table-layout: fixed !important;
   }
 
   .table td,
