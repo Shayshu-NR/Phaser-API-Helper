@@ -20,7 +20,6 @@
     slide,
   } from "svelte/transition";
   import phaserCEDict from "./PhaserCESearchData.json";
-  console.log(phaserCEDict);
 
   onMount(() => {
     //window.$ = $;
@@ -84,7 +83,6 @@
     }
 
     let getRequest = async function (searchKey: string): Promise<any> {
-      console.log(searchVersion);
       switch (searchVersion) {
         case "Phaser 3":
           const response = await fetch(
@@ -101,7 +99,6 @@
       }
     };
 
-    console.log(e.target.value);
     Promise.resolve(getRequest(String(e.target.value))).then(function (value) {
       switch (searchVersion) {
         case "Phaser 3":
@@ -120,7 +117,6 @@
     var ret = [];
     var regex = new RegExp(srch.toLowerCase());
     structure.forEach((x) => {
-      console.log(x);
       var dataToPush = {
         type: x.type,
         data: [],
@@ -167,8 +163,6 @@
     let searchType = window.jQuery.default(e.target).data("value-type");
     searchValSelected = true;
     searchVal = longname;
-
-    console.log(longname, memberof);
 
     let getRequest = async function (searchKey: string): Promise<any> {
       switch (searchVersion) {
