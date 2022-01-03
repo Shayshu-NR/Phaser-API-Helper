@@ -30,10 +30,16 @@ const vscode = __importStar(__webpack_require__(1));
 const PhaserPanel_1 = __webpack_require__(2);
 const Sidebar_1 = __webpack_require__(4);
 function activate(context) {
-    context.subscriptions.push(vscode.commands.registerCommand('pah.apinfo', () => {
-        PhaserPanel_1.PhaserPanel.createOrShow(context.extensionUri);
+    context.subscriptions.push(vscode.commands.registerCommand("pah.apinfo", () => {
+        const { activeTextEditor } = vscode.window;
+        if (!activeTextEditor) {
+            vscode.window.showInformationMessage("No active text editor");
+            return;
+        }
+        const text = activeTextEditor.document.getText(activeTextEditor.selection);
+        vscode.window.showInformationMessage(text);
     }));
-    context.subscriptions.push(vscode.commands.registerCommand('pah.refresh ', () => {
+    context.subscriptions.push(vscode.commands.registerCommand("pah.refresh ", () => {
         PhaserPanel_1.PhaserPanel.kill();
         PhaserPanel_1.PhaserPanel.createOrShow(context.extensionUri);
         setTimeout(() => {
