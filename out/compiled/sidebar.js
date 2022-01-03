@@ -11433,18 +11433,18 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
+    	child_ctx[17] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[21] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
-    // (202:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (225:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11472,7 +11472,7 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
 
-    			/*div_binding*/ ctx[13](div);
+    			/*div_binding*/ ctx[14](div);
     		},
     		p(ctx, dirty) {
     			if (dirty & /*Array, searchResults, handleLinkClick*/ 130) {
@@ -11501,15 +11501,15 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(div);
     			destroy_each(each_blocks, detaching);
-    			/*div_binding*/ ctx[13](null);
+    			/*div_binding*/ ctx[14](null);
     		}
     	};
     }
 
-    // (212:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (235:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
-    	let t_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].name + "";
+    	let t_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].name + "";
     	let t;
     	let a_data_value_longname_value;
     	let a_data_value_memberof_value;
@@ -11522,9 +11522,9 @@ var app = (function () {
     			a = element("a");
     			t = text(t_value);
     			attr(a, "class", "dropdown-item text-white svelte-15lmnww");
-    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].longname);
-    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].memberof);
-    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[16].type);
+    			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname);
+    			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].memberof);
+    			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[17].type);
     		},
     		m(target, anchor) {
     			insert(target, a, anchor);
@@ -11536,17 +11536,17 @@ var app = (function () {
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].name + "")) set_data(t, t_value);
+    			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].name + "")) set_data(t, t_value);
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].longname)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname)) {
     				attr(a, "data-value-longname", a_data_value_longname_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[16].data[/*i*/ ctx[21]].memberof)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_memberof_value !== (a_data_value_memberof_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].memberof)) {
     				attr(a, "data-value-memberof", a_data_value_memberof_value);
     			}
 
-    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[16].type)) {
+    			if (dirty & /*searchResults*/ 2 && a_data_value_type_value !== (a_data_value_type_value = /*resType*/ ctx[17].type)) {
     				attr(a, "data-value-type", a_data_value_type_value);
     			}
     		},
@@ -11558,18 +11558,18 @@ var app = (function () {
     	};
     }
 
-    // (208:14) {#each searchResults as resType}
+    // (231:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
-    	let t0_value = /*resType*/ ctx[16].type.charAt(0).toUpperCase() + /*resType*/ ctx[16].type.slice(1) + "";
+    	let t0_value = /*resType*/ ctx[17].type.charAt(0).toUpperCase() + /*resType*/ ctx[17].type.slice(1) + "";
     	let t0;
     	let t1;
     	let t2;
     	let div;
 
-    	let each_value_1 = Array(/*resType*/ ctx[16].data.length > 3
+    	let each_value_1 = Array(/*resType*/ ctx[17].data.length > 3
     	? 3
-    	: /*resType*/ ctx[16].data.length);
+    	: /*resType*/ ctx[17].data.length);
 
     	let each_blocks = [];
 
@@ -11605,12 +11605,12 @@ var app = (function () {
     			insert(target, div, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[16].type.charAt(0).toUpperCase() + /*resType*/ ctx[16].type.slice(1) + "")) set_data(t0, t0_value);
+    			if (dirty & /*searchResults*/ 2 && t0_value !== (t0_value = /*resType*/ ctx[17].type.charAt(0).toUpperCase() + /*resType*/ ctx[17].type.slice(1) + "")) set_data(t0, t0_value);
 
     			if (dirty & /*searchResults, handleLinkClick*/ 130) {
-    				each_value_1 = Array(/*resType*/ ctx[16].data.length > 3
+    				each_value_1 = Array(/*resType*/ ctx[17].data.length > 3
     				? 3
-    				: /*resType*/ ctx[16].data.length);
+    				: /*resType*/ ctx[17].data.length);
 
     				let i;
 
@@ -11718,7 +11718,7 @@ var app = (function () {
     			attr(button, "type", "button");
     			attr(button, "data-bs-toggle", "dropdown");
     			attr(button, "aria-expanded", "false");
-    			if (/*searchVersion*/ ctx[5] === void 0) add_render_callback(() => /*button_input_handler*/ ctx[9].call(button));
+    			if (/*searchVersion*/ ctx[5] === void 0) add_render_callback(() => /*button_input_handler*/ ctx[10].call(button));
     			attr(a0, "class", "dropdown-item svelte-15lmnww");
     			attr(a0, "href", "#");
     			attr(li0, "class", "svelte-15lmnww");
@@ -11736,7 +11736,7 @@ var app = (function () {
     			attr(br, "class", "svelte-15lmnww");
     			attr(div6, "class", "card-body svelte-15lmnww");
     			attr(div6, "contenteditable", "true");
-    			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[14].call(div6));
+    			if (/*searchContent*/ ctx[4] === void 0) add_render_callback(() => /*div6_input_handler*/ ctx[15].call(div6));
     			attr(div7, "class", "card bg-dark svelte-15lmnww");
     			attr(div8, "class", "container svelte-15lmnww");
     			attr(div8, "id", "results");
@@ -11787,14 +11787,14 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler*/ ctx[8]),
+    					listen(input, "input", /*input_input_handler*/ ctx[9]),
     					listen(input, "input", /*handleInput*/ ctx[6]),
-    					listen(button, "input", /*button_input_handler*/ ctx[9]),
-    					listen(button, "click", /*click_handler*/ ctx[10]),
-    					listen(a0, "click", /*click_handler_1*/ ctx[11]),
-    					listen(a1, "click", /*click_handler_2*/ ctx[12]),
+    					listen(button, "input", /*button_input_handler*/ ctx[10]),
+    					listen(button, "click", /*click_handler*/ ctx[11]),
+    					listen(a0, "click", /*click_handler_1*/ ctx[12]),
+    					listen(a1, "click", /*click_handler_2*/ ctx[13]),
     					listen(form, "submit", submit_handler),
-    					listen(div6, "input", /*div6_input_handler*/ ctx[14])
+    					listen(div6, "input", /*div6_input_handler*/ ctx[15])
     				];
 
     				mounted = true;
@@ -11866,7 +11866,6 @@ var app = (function () {
     	var regex = new RegExp(srch.toLowerCase());
 
     	structure.forEach(x => {
-    		console.log(x);
     		var dataToPush = { type: x.type, data: [] };
 
     		x.data.forEach(y => {
@@ -11886,8 +11885,6 @@ var app = (function () {
     };
 
     function instance($$self, $$props, $$invalidate) {
-    	console.log(phaserCEDict);
-
     	onMount(() => {
     		//window.$ = $;
     		window.jQuery = jQuery;
@@ -11910,8 +11907,6 @@ var app = (function () {
     		}
 
     		let getRequest = async function (searchKey) {
-    			console.log(searchVersion);
-
     			switch (searchVersion) {
     				case "Phaser 3":
     					const response = await fetch("https://newdocs.phaser.io/api/search-bar?search=" + searchKey + "&version=3.55.2");
@@ -11923,8 +11918,6 @@ var app = (function () {
     					return "";
     			}
     		};
-
-    		console.log(e.target.value);
 
     		Promise.resolve(getRequest(String(e.target.value))).then(function (value) {
     			switch (searchVersion) {
@@ -11951,6 +11944,10 @@ var app = (function () {
     			case "classes":
     				return longname;
     			case "members":
+    			case "function":
+    			case "constants":
+    			case "events":
+    			case "typedef":
     				return memberof;
     			default:
     				return "";
@@ -11963,16 +11960,16 @@ var app = (function () {
     		let searchType = window.jQuery.default(e.target).data("value-type");
     		$$invalidate(3, searchValSelected = true);
     		$$invalidate(0, searchVal = longname);
-    		console.log(longname, memberof);
+    		let githubDoc = "https://raw.githubusercontent.com/photonstorm/";
 
     		let getRequest = async function (searchKey) {
     			switch (searchVersion) {
     				case "Phaser 3":
-    					var response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" + searchKey + ".html");
+    					var response = await fetch(githubDoc + "phaser3-docs/master/docs/" + searchKey + ".html");
     					var body = await response.text();
     					return body;
     				case "Phaser CE":
-    					response = await fetch("https://raw.githubusercontent.com/photonstorm/phaser-ce/master/docs/" + searchKey + (searchKey.match(/.html/) ? "" : ".html"));
+    					response = await fetch(githubDoc + "phaser-ce/master/docs/" + searchKey + (searchKey.match(/.html/) ? "" : ".html"));
     					body = await response.text();
     					return body;
     				default:
@@ -11983,6 +11980,25 @@ var app = (function () {
     		Promise.resolve(getRequest(createPhaserDocSearchURL(longname, memberof, searchType))).then(function (val) {
     			var doc = document.createElement("html");
     			doc.innerHTML = val;
+    			let elementID;
+
+    			switch (searchType) {
+    				case "members":
+    					elementID = longname.split("-")[1] + ".name";
+    					break;
+    				case "constants":
+    				case "typedef":
+    					elementID = "\\." + longname.split(".")[longname.split(".").length - 1] + ".name";
+    					break;
+    				case "events":
+    					elementID = "event\\:" + longname.split(".")[longname.split(".").length - 1] + ".name";
+    					break;
+    				default:
+    					elementID = "";
+    					break;
+    			}
+
+    			console.log(elementID, typeof elementID);
 
     			switch (searchType) {
     				case "namespaces":
@@ -11992,15 +12008,26 @@ var app = (function () {
     					: window.jQuery.default(doc).find("#main").html());
     					break;
     				case "members":
+    				case "constants":
     					var memberHeader = searchVersion == "Phaser 3"
-    					? window.jQuery.default(doc).find("#" + longname.split("-")[1] + ".name")
+    					? window.jQuery.default(doc).find("#" + elementID)
     					: window.jQuery.default(doc).find("#main").html();
     					$$invalidate(4, searchContent = searchVersion == "Phaser 3"
     					? memberHeader.html() + memberHeader.next().html()
     					: memberHeader);
     					break;
+    				case "function":
+    				case "events":
+    				case "typedef":
+    					memberHeader = window.jQuery.default(doc).find("#" + elementID);
+    					$$invalidate(4, searchContent = memberHeader.parent().html() + memberHeader.parent().next().html());
+    					break;
     			}
     		});
+    	}
+
+    	function switchVersions(docVersion) {
+    		window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle().then($$invalidate(5, searchVersion = docVersion));
     	}
 
     	function input_input_handler() {
@@ -12014,8 +12041,8 @@ var app = (function () {
     	}
 
     	const click_handler = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle();
-    	const click_handler_1 = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle().then($$invalidate(5, searchVersion = "Phaser 3"));
-    	const click_handler_2 = () => window.jQuery.default(".dropdown-menu-btn.dropdown-menu-end").toggle().then($$invalidate(5, searchVersion = "Phaser CE"));
+    	const click_handler_1 = () => switchVersions("Phaser 3");
+    	const click_handler_2 = () => switchVersions("Phaser CE");
 
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
@@ -12038,6 +12065,7 @@ var app = (function () {
     		searchVersion,
     		handleInput,
     		handleLinkClick,
+    		switchVersions,
     		input_input_handler,
     		button_input_handler,
     		click_handler,

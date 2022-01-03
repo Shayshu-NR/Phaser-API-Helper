@@ -161,6 +161,9 @@ export class PhaserPanel {
                     <link href="${stylesMainUri}" rel="stylesheet">
                     <script nonce="${nonce}">
                     </script>
+                    <script nonce="${nonce}">
+                        const tsvscode = acquireVsCodeApi();
+                    </script>
                 </head>
                 <body>
                 </body>

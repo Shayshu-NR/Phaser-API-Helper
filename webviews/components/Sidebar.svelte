@@ -1,11 +1,3 @@
-<!--
-  /*
-  * TODO:
-  * - Allow for version switching
-  * - Make the dropdown go away once a search value has been selected
-  * -
-  */
--->
 <script lang="ts">
   import * as jQuery from "../../node_modules/jquery/dist/jquery.js";
   import { onMount } from "svelte";
@@ -151,6 +143,10 @@
       case "classes":
         return longname;
       case "members":
+      case "function":
+      case "constants":
+      case "events":
+      case "typedef":
         return memberof;
       default:
         return "";
@@ -163,20 +159,20 @@
     let searchType = window.jQuery.default(e.target).data("value-type");
     searchValSelected = true;
     searchVal = longname;
+    let githubDoc = "https://raw.githubusercontent.com/photonstorm/";
 
     let getRequest = async function (searchKey: string): Promise<any> {
       switch (searchVersion) {
         case "Phaser 3":
           var response = await fetch(
-            "https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/docs/" +
-              searchKey +
-              ".html"
+            githubDoc + "phaser3-docs/master/docs/" + searchKey + ".html"
           );
           var body = await response.text();
           return body;
         case "Phaser CE":
           response = await fetch(
-            "https://raw.githubusercontent.com/photonstorm/phaser-ce/master/docs/" +
+            githubDoc +
+              "phaser-ce/master/docs/" +
               searchKey +
               (searchKey.match(/.html/) ? "" : ".html")
           );
@@ -192,6 +188,25 @@
     ).then(function (val) {
       var doc = document.createElement("html");
       doc.innerHTML = val;
+      let elementID: string;
+
+      switch(searchType) {
+        case "members" : 
+          elementID = longname.split("-")[1] + ".name";
+          break;
+        case "constants":
+        case "typedef":
+           elementID = "\\." + longname.split(".")[longname.split(".").length - 1] + ".name";
+          break;
+        case "events" : 
+          elementID = "event\\:"  + longname.split(".")[longname.split(".").length - 1] + ".name";
+          break;
+        default:
+          elementID = "";
+          break;
+      }
+
+      console.log(elementID, typeof elementID);
 
       switch (searchType) {
         case "namespaces":
@@ -202,21 +217,37 @@
               : window.jQuery.default(doc).find("#main").html();
           break;
         case "members":
+        case "constants":
           var memberHeader =
+          searchVersion == "Phaser 3"
+          ? 
+            window.jQuery
+            .default(doc)
+            .find("#" + elementID)
+            : 
+            window.jQuery.default(doc).find("#main").html();
+            searchContent =
             searchVersion == "Phaser 3"
-              ? window.jQuery
-                  .default(doc)
-                  .find("#" + longname.split("-")[1] + ".name")
-              : window.jQuery.default(doc).find("#main").html();
-          searchContent =
-            searchVersion == "Phaser 3"
-              ? memberHeader.html() + memberHeader.next().html()
-              : memberHeader;
+            ? memberHeader.html() + memberHeader.next().html()
+            : memberHeader;
+            break;
+        case "function":
+        case "events":
+        case "typedef":
+          memberHeader = window.jQuery.default(doc).find("#" + elementID);
+          searchContent = memberHeader.parent().html() + memberHeader.parent().next().html();  
           break;
         default:
           break;
       }
     });
+  }
+
+  function switchVersions(docVersion: string) {
+    window.jQuery
+      .default(".dropdown-menu-btn.dropdown-menu-end")
+      .toggle()
+      .then((searchVersion = docVersion));
   }
 </script>
 
@@ -257,25 +288,15 @@
               style="display: none;"
             >
               <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  on:click={() =>
-                    window.jQuery
-                      .default(".dropdown-menu-btn.dropdown-menu-end")
-                      .toggle()
-                      .then((searchVersion = "Phaser 3"))}>Phaser 3</a
+                <a class="dropdown-item" href="#" on:click={() => switchVersions("Phaser 3")}
+                  >Phaser 3</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item"
                   href="#"
-                  on:click={() =>
-                    window.jQuery
-                      .default(".dropdown-menu-btn.dropdown-menu-end")
-                      .toggle()
-                      .then((searchVersion = "Phaser CE"))}>Phaser CE</a
+                  on:click={() => switchVersions("Phaser CE")}>Phaser CE</a
                 >
               </li>
             </ul>
