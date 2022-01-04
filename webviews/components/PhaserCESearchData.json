@@ -4,16 +4,19 @@
     "data": [
       {
         "longname": "Phaser",
+        "description" : "Phaser",
         "name": "Phaser",
         "memberof": "Phaser.html"
       },
       {
         "longname": "PhaserGlobal",
+        "description" : "Phaser Global",
         "name": "PhaserGlobal",
         "memberof": "PhaserGlobal.html"
       },
       {
         "longname": "PIXI",
+        "description" : "PIXI",
         "name": "PIXI",
         "memberof": "PIXI.html"
       }
@@ -25,936 +28,1123 @@
       {
         "memberof": "CreatureShader.html",
         "longname": "CreatureShader",
+        "description" : "",
         "name": "CreatureShader"
       },
       {
         "memberof": "EarCut.html",
         "longname": "EarCut",
+        "description" : "",
         "name": "EarCut"
       },
       {
         "memberof": "Event.html",
         "longname": "Event",
+        "description" : "",
         "name": "Event"
       },
       {
         "memberof": "EventTarget.html",
         "longname": "EventTarget",
+        "description" : "",
         "name": "EventTarget"
       },
       {
         "memberof": "Phaser.Animation.html",
         "longname": "Animation",
+        "description" : "",
         "name": "Animation"
       },
       {
         "memberof": "Phaser.AnimationManager.html",
         "longname": "AnimationManager",
+        "description" : "",
         "name": "AnimationManager"
       },
       {
         "memberof": "Phaser.AnimationParser.html",
         "longname": "AnimationParser",
+        "description" : "",
         "name": "AnimationParser"
       },
       {
         "memberof": "Phaser.ArraySet.html",
         "longname": "ArraySet",
+        "description" : "",
         "name": "ArraySet"
       },
       {
         "memberof": "Phaser.ArrayUtils.html",
         "longname": "ArrayUtils",
+        "description" : "",
         "name": "ArrayUtils"
       },
       {
         "memberof": "Phaser.AudioSprite.html",
         "longname": "AudioSprite",
+        "description" : "",
         "name": "AudioSprite"
       },
       {
         "memberof": "Phaser.BitmapData.html",
         "longname": "BitmapData",
+        "description" : "",
         "name": "BitmapData"
       },
       {
         "memberof": "Phaser.BitmapText.html",
         "longname": "BitmapText",
+        "description" : "",
         "name": "BitmapText"
       },
       {
         "memberof": "Phaser.Bullet.html",
         "longname": "Bullet",
+        "description" : "",
         "name": "Bullet"
       },
       {
         "memberof": "Phaser.Button.html",
         "longname": "Button",
+        "description" : "",
         "name": "Button"
       },
       {
         "memberof": "Phaser.Cache.html",
         "longname": "Cache",
+        "description" : "",
         "name": "Cache"
       },
       {
         "memberof": "Phaser.Camera.html",
         "longname": "Camera",
+        "description" : "",
         "name": "Camera"
       },
       {
         "memberof": "Phaser.Canvas.html",
         "longname": "Canvas",
+        "description" : "",
         "name": "Canvas"
       },
       {
         "memberof": "Phaser.CanvasPool.html",
         "longname": "CanvasPool",
+        "description" : "",
         "name": "CanvasPool"
       },
       {
         "memberof": "Phaser.Circle.html",
         "longname": "Circle",
+        "description" : "",
         "name": "Circle"
       },
       {
         "memberof": "Phaser.Color.html",
         "longname": "Color",
+        "description" : "",
         "name": "Color"
       },
       {
         "memberof": "Phaser.Component.Angle.html",
         "longname": "Angle",
+        "description" : "",
         "name": "Angle"
       },
       {
         "memberof": "Phaser.Component.Animation.html",
         "longname": "Animation",
+        "description" : "",
         "name": "Animation"
       },
       {
         "memberof": "Phaser.Component.AutoCull.html",
         "longname": "AutoCull",
+        "description" : "",
         "name": "AutoCull"
       },
       {
         "memberof": "Phaser.Component.Bounds.html",
         "longname": "Bounds",
+        "description" : "",
         "name": "Bounds"
       },
       {
         "memberof": "Phaser.Component.BringToTop.html",
         "longname": "BringToTop",
+        "description" : "",
         "name": "BringToTop"
       },
       {
         "memberof": "Phaser.Component.Core.html",
         "longname": "Core",
+        "description" : "",
         "name": "Core"
       },
       {
         "memberof": "Phaser.Component.Crop.html",
         "longname": "Crop",
+        "description" : "",
         "name": "Crop"
       },
       {
         "memberof": "Phaser.Component.Delta.html",
         "longname": "Delta",
+        "description" : "",
         "name": "Delta"
       },
       {
         "memberof": "Phaser.Component.Destroy.html",
         "longname": "Destroy",
+        "description" : "",
         "name": "Destroy"
       },
       {
         "memberof": "Phaser.Component.FixedToCamera.html",
         "longname": "FixedToCamera",
+        "description" : "",
         "name": "FixedToCamera"
       },
       {
         "memberof": "Phaser.Component.Health.html",
         "longname": "Health",
+        "description" : "",
         "name": "Health"
       },
       {
         "memberof": "Phaser.Component.InCamera.html",
         "longname": "InCamera",
+        "description" : "",
         "name": "InCamera"
       },
       {
         "memberof": "Phaser.Component.InputEnabled.html",
         "longname": "InputEnabled",
+        "description" : "",
         "name": "InputEnabled"
       },
       {
         "memberof": "Phaser.Component.InWorld.html",
         "longname": "InWorld",
+        "description" : "",
         "name": "InWorld"
       },
       {
         "memberof": "Phaser.Component.LifeSpan.html",
         "longname": "LifeSpan",
+        "description" : "",
         "name": "LifeSpan"
       },
       {
         "memberof": "Phaser.Component.LoadTexture.html",
         "longname": "LoadTexture",
+        "description" : "",
         "name": "LoadTexture"
       },
       {
         "memberof": "Phaser.Component.Overlap.html",
         "longname": "Overlap",
+        "description" : "",
         "name": "Overlap"
       },
       {
         "memberof": "Phaser.Component.PhysicsBody.html",
         "longname": "PhysicsBody",
+        "description" : "",
         "name": "PhysicsBody"
       },
       {
         "memberof": "Phaser.Component.Reset.html",
         "longname": "Reset",
+        "description" : "",
         "name": "Reset"
       },
       {
         "memberof": "Phaser.Component.ScaleMinMax.html",
         "longname": "ScaleMinMax",
+        "description" : "",
         "name": "ScaleMinMax"
       },
       {
         "memberof": "Phaser.Component.Smoothed.html",
         "longname": "Smoothed",
+        "description" : "",
         "name": "Smoothed"
       },
       {
         "memberof": "Phaser.Create.html",
         "longname": "Create",
+        "description" : "",
         "name": "Create"
       },
       {
         "memberof": "Phaser.Creature.html",
         "longname": "Creature",
+        "description" : "",
         "name": "Creature"
       },
       {
         "memberof": "Phaser.Device.html",
         "longname": "Device",
+        "description" : "",
         "name": "Device"
       },
       {
         "memberof": "Phaser.DeviceButton.html",
         "longname": "DeviceButton",
+        "description" : "",
         "name": "DeviceButton"
       },
       {
         "memberof": "Phaser.DOM.html",
         "longname": "DOM",
+        "description" : "",
         "name": "DOM"
       },
       {
         "memberof": "Phaser.Easing.html",
         "longname": "Easing",
+        "description" : "",
         "name": "Easing"
       },
       {
         "memberof": "Phaser.Easing.Back.html",
         "longname": "Back",
+        "description" : "",
         "name": "Back"
       },
       {
         "memberof": "Phaser.Easing.Bounce.html",
         "longname": "Bounce",
+        "description" : "",
         "name": "Bounce"
       },
       {
         "memberof": "Phaser.Easing.Circular.html",
         "longname": "Circular",
+        "description" : "",
         "name": "Circular"
       },
       {
         "memberof": "Phaser.Easing.Cubic.html",
         "longname": "Cubic",
+        "description" : "",
         "name": "Cubic"
       },
       {
         "memberof": "Phaser.Easing.Elastic.html",
         "longname": "Elastic",
+        "description" : "",
         "name": "Elastic"
       },
       {
         "memberof": "Phaser.Easing.Exponential.html",
         "longname": "Exponential",
+        "description" : "",
         "name": "Exponential"
       },
       {
         "memberof": "Phaser.Easing.Linear.html",
         "longname": "Linear",
+        "description" : "",
         "name": "Linear"
       },
       {
         "memberof": "Phaser.Easing.Quadratic.html",
         "longname": "Quadratic",
+        "description" : "",
         "name": "Quadratic"
       },
       {
         "memberof": "Phaser.Easing.Quartic.html",
         "longname": "Quartic",
+        "description" : "",
         "name": "Quartic"
       },
       {
         "memberof": "Phaser.Easing.Quintic.html",
         "longname": "Quintic",
+        "description" : "",
         "name": "Quintic"
       },
       {
         "memberof": "Phaser.Easing.Sinusoidal.html",
         "longname": "Sinusoidal",
+        "description" : "",
         "name": "Sinusoidal"
       },
       {
         "memberof": "Phaser.Ellipse.html",
         "longname": "Ellipse",
+        "description" : "",
         "name": "Ellipse"
       },
       {
         "memberof": "Phaser.Events.html",
         "longname": "Events",
+        "description" : "",
         "name": "Events"
       },
       {
         "memberof": "Phaser.Filter.html",
         "longname": "Filter",
+        "description" : "",
         "name": "Filter"
       },
       {
         "memberof": "Phaser.FlexGrid.html",
         "longname": "FlexGrid",
+        "description" : "",
         "name": "FlexGrid"
       },
       {
         "memberof": "Phaser.FlexLayer.html",
         "longname": "FlexLayer",
+        "description" : "",
         "name": "FlexLayer"
       },
       {
         "memberof": "Phaser.Frame.html",
         "longname": "Frame",
+        "description" : "",
         "name": "Frame"
       },
       {
         "memberof": "Phaser.FrameData.html",
         "longname": "FrameData",
+        "description" : "",
         "name": "FrameData"
       },
       {
         "memberof": "Phaser.Game.html",
         "longname": "Game",
+        "description" : "",
         "name": "Game"
       },
       {
         "memberof": "Phaser.GameObjectCreator.html",
         "longname": "GameObjectCreator",
+        "description" : "",
         "name": "GameObjectCreator"
       },
       {
         "memberof": "Phaser.GameObjectFactory.html",
         "longname": "GameObjectFactory",
+        "description" : "",
         "name": "GameObjectFactory"
       },
       {
         "memberof": "Phaser.Gamepad.html",
         "longname": "Gamepad",
+        "description" : "",
         "name": "Gamepad"
       },
       {
         "memberof": "Phaser.Graphics.html",
         "longname": "Graphics",
+        "description" : "",
         "name": "Graphics"
       },
       {
         "memberof": "Phaser.GraphicsData.html",
         "longname": "GraphicsData",
+        "description" : "",
         "name": "GraphicsData"
       },
       {
         "memberof": "Phaser.Group.html",
         "longname": "Group",
+        "description" : "",
         "name": "Group"
       },
       {
         "memberof": "Phaser.Hermite.html",
         "longname": "Hermite",
+        "description" : "",
         "name": "Hermite"
       },
       {
         "memberof": "Phaser.Image.html",
         "longname": "Image",
+        "description" : "",
         "name": "Image"
       },
       {
         "memberof": "Phaser.ImageCollection.html",
         "longname": "ImageCollection",
+        "description" : "",
         "name": "ImageCollection"
       },
       {
         "memberof": "Phaser.Input.html",
         "longname": "Input",
+        "description" : "",
         "name": "Input"
       },
       {
         "memberof": "Phaser.InputHandler.html",
         "longname": "InputHandler",
+        "description" : "",
         "name": "InputHandler"
       },
       {
         "memberof": "Phaser.Key.html",
         "longname": "Key",
+        "description" : "",
         "name": "Key"
       },
       {
         "memberof": "Phaser.Keyboard.html",
         "longname": "Keyboard",
+        "description" : "",
         "name": "Keyboard"
       },
       {
         "memberof": "Phaser.KeyCode.html",
         "longname": "KeyCode",
+        "description" : "",
         "name": "KeyCode"
       },
       {
         "memberof": "Phaser.Line.html",
         "longname": "Line",
+        "description" : "",
         "name": "Line"
       },
       {
         "memberof": "Phaser.LinkedList.html",
         "longname": "LinkedList",
+        "description" : "",
         "name": "LinkedList"
       },
       {
         "memberof": "Phaser.Loader.html",
         "longname": "Loader",
+        "description" : "",
         "name": "Loader"
       },
       {
         "memberof": "Phaser.LoaderParser.html",
         "longname": "LoaderParser",
+        "description" : "",
         "name": "LoaderParser"
       },
       {
         "memberof": "Phaser.Math.html",
         "longname": "Math",
+        "description" : "",
         "name": "Math"
       },
       {
         "memberof": "Phaser.Matrix.html",
         "longname": "Matrix",
+        "description" : "",
         "name": "Matrix"
       },
       {
         "memberof": "Phaser.Mouse.html",
         "longname": "Mouse",
+        "description" : "",
         "name": "Mouse"
       },
       {
         "memberof": "Phaser.MouseWheel.html",
         "longname": "MouseWheel",
+        "description" : "",
         "name": "MouseWheel"
       },
       {
         "memberof": "Phaser.MSPointer.html",
         "longname": "MSPointer",
+        "description" : "",
         "name": "MSPointer"
       },
       {
         "memberof": "Phaser.Particle.html",
         "longname": "Particle",
+        "description" : "",
         "name": "Particle"
       },
       {
         "memberof": "Phaser.Particles.html",
         "longname": "Particles",
+        "description" : "",
         "name": "Particles"
       },
       {
         "memberof": "Phaser.Particles.Arcade.html",
         "longname": "Arcade",
+        "description" : "",
         "name": "Arcade"
       },
       {
         "memberof": "Phaser.Particles.Arcade.Emitter.html",
         "longname": "Emitter",
+        "description" : "",
         "name": "Emitter"
       },
       {
         "memberof": "Phaser.Path.html",
         "longname": "Path",
+        "description" : "",
         "name": "Path"
       },
       {
         "memberof": "Phaser.PathFollower.html",
         "longname": "PathFollower",
+        "description" : "",
         "name": "PathFollower"
       },
       {
         "memberof": "Phaser.PathPoint.html",
         "longname": "PathPoint",
+        "description" : "",
         "name": "PathPoint"
       },
       {
         "memberof": "Phaser.Physics.html",
         "longname": "Physics",
+        "description" : "",
         "name": "Physics"
       },
       {
         "memberof": "Phaser.Physics.Arcade.html",
         "longname": "Arcade",
+        "description" : "",
         "name": "Arcade"
       },
       {
         "memberof": "Phaser.Physics.Arcade.Body.html",
         "longname": "Body",
+        "description" : "",
         "name": "Body"
       },
       {
         "memberof": "Phaser.Physics.Arcade.TilemapCollision.html",
         "longname": "TilemapCollision",
+        "description" : "",
         "name": "TilemapCollision"
       },
       {
         "memberof": "Phaser.Physics.Ninja.html",
         "longname": "Ninja",
+        "description" : "",
         "name": "Ninja"
       },
       {
         "memberof": "Phaser.Physics.Ninja.AABB.html",
         "longname": "AABB",
+        "description" : "",
         "name": "AABB"
       },
       {
         "memberof": "Phaser.Physics.Ninja.Body.html",
         "longname": "Body",
+        "description" : "",
         "name": "Body"
       },
       {
         "memberof": "Phaser.Physics.Ninja.Circle.html",
         "longname": "Circle",
+        "description" : "",
         "name": "Circle"
       },
       {
         "memberof": "Phaser.Physics.Ninja.Tile.html",
         "longname": "Tile",
+        "description" : "",
         "name": "Tile"
       },
       {
         "memberof": "Phaser.Physics.P2.html",
         "longname": "P2",
+        "description" : "",
         "name": "P2"
       },
       {
         "memberof": "Phaser.Physics.P2.Body.html",
         "longname": "Body",
+        "description" : "",
         "name": "Body"
       },
       {
         "memberof": "Phaser.Physics.P2.BodyDebug.html",
         "longname": "BodyDebug",
+        "description" : "",
         "name": "BodyDebug"
       },
       {
         "memberof": "Phaser.Physics.P2.CollisionGroup.html",
         "longname": "CollisionGroup",
+        "description" : "",
         "name": "CollisionGroup"
       },
       {
         "memberof": "Phaser.Physics.P2.ContactMaterial.html",
         "longname": "ContactMaterial",
+        "description" : "",
         "name": "ContactMaterial"
       },
       {
         "memberof": "Phaser.Physics.P2.DistanceConstraint.html",
         "longname": "DistanceConstraint",
+        "description" : "",
         "name": "DistanceConstraint"
       },
       {
         "memberof": "Phaser.Physics.P2.FixtureList.html",
         "longname": "FixtureList",
+        "description" : "",
         "name": "FixtureList"
       },
       {
         "memberof": "Phaser.Physics.P2.GearConstraint.html",
         "longname": "GearConstraint",
+        "description" : "",
         "name": "GearConstraint"
       },
       {
         "memberof": "Phaser.Physics.P2.InversePointProxy.html",
         "longname": "InversePointProxy",
+        "description" : "",
         "name": "InversePointProxy"
       },
       {
         "memberof": "Phaser.Physics.P2.LockConstraint.html",
         "longname": "LockConstraint",
+        "description" : "",
         "name": "LockConstraint"
       },
       {
         "memberof": "Phaser.Physics.P2.Material.html",
         "longname": "Material",
+        "description" : "",
         "name": "Material"
       },
       {
         "memberof": "Phaser.Physics.P2.PointProxy.html",
         "longname": "PointProxy",
+        "description" : "",
         "name": "PointProxy"
       },
       {
         "memberof": "Phaser.Physics.P2.PrismaticConstraint.html",
         "longname": "PrismaticConstraint",
+        "description" : "",
         "name": "PrismaticConstraint"
       },
       {
         "memberof": "Phaser.Physics.P2.RevoluteConstraint.html",
         "longname": "RevoluteConstraint",
+        "description" : "",
         "name": "RevoluteConstraint"
       },
       {
         "memberof": "Phaser.Physics.P2.RotationalSpring.html",
         "longname": "RotationalSpring",
+        "description" : "",
         "name": "RotationalSpring"
       },
       {
         "memberof": "Phaser.Physics.P2.Spring.html",
         "longname": "Spring",
+        "description" : "",
         "name": "Spring"
       },
       {
         "memberof": "Phaser.Plugin.html",
         "longname": "Plugin",
+        "description" : "",
         "name": "Plugin"
       },
       {
         "memberof": "Phaser.Plugin.PathManager.html",
         "longname": "PathManager",
+        "description" : "",
         "name": "PathManager"
       },
       {
         "memberof": "Phaser.PluginManager.html",
         "longname": "PluginManager",
+        "description" : "",
         "name": "PluginManager"
       },
       {
         "memberof": "Phaser.Point.html",
         "longname": "Point",
+        "description" : "",
         "name": "Point"
       },
       {
         "memberof": "Phaser.Pointer.html",
         "longname": "Pointer",
+        "description" : "",
         "name": "Pointer"
       },
       {
         "memberof": "Phaser.PointerLock.html",
         "longname": "PointerLock",
+        "description" : "",
         "name": "PointerLock"
       },
       {
         "memberof": "Phaser.PointerMode.html",
         "longname": "PointerMode",
+        "description" : "",
         "name": "PointerMode"
       },
       {
         "memberof": "Phaser.Polygon.html",
         "longname": "Polygon",
+        "description" : "",
         "name": "Polygon"
       },
       {
         "memberof": "Phaser.QuadTree.html",
         "longname": "QuadTree",
+        "description" : "",
         "name": "QuadTree"
       },
       {
         "memberof": "Phaser.RandomDataGenerator.html",
         "longname": "RandomDataGenerator",
+        "description" : "",
         "name": "RandomDataGenerator"
       },
       {
         "memberof": "Phaser.Rectangle.html",
         "longname": "Rectangle",
+        "description" : "",
         "name": "Rectangle"
       },
       {
         "memberof": "Phaser.RenderTexture.html",
         "longname": "RenderTexture",
+        "description" : "",
         "name": "RenderTexture"
       },
       {
         "memberof": "Phaser.RequestAnimationFrame.html",
         "longname": "RequestAnimationFrame",
+        "description" : "",
         "name": "RequestAnimationFrame"
       },
       {
         "memberof": "Phaser.RetroFont.html",
         "longname": "RetroFont",
+        "description" : "",
         "name": "RetroFont"
       },
       {
         "memberof": "Phaser.Rope.html",
         "longname": "Rope",
+        "description" : "",
         "name": "Rope"
       },
       {
         "memberof": "Phaser.RoundedRectangle.html",
         "longname": "RoundedRectangle",
+        "description" : "",
         "name": "RoundedRectangle"
       },
       {
         "memberof": "Phaser.ScaleManager.html",
         "longname": "ScaleManager",
+        "description" : "",
         "name": "ScaleManager"
       },
       {
         "memberof": "Phaser.Signal.html",
         "longname": "Signal",
+        "description" : "",
         "name": "Signal"
       },
       {
         "memberof": "Phaser.SignalBinding.html",
         "longname": "SignalBinding",
+        "description" : "",
         "name": "SignalBinding"
       },
       {
         "memberof": "Phaser.SinglePad.html",
         "longname": "SinglePad",
+        "description" : "",
         "name": "SinglePad"
       },
       {
         "memberof": "Phaser.Sound.html",
         "longname": "Sound",
+        "description" : "",
         "name": "Sound"
       },
       {
         "memberof": "Phaser.SoundManager.html",
         "longname": "SoundManager",
+        "description" : "",
         "name": "SoundManager"
       },
       {
         "memberof": "Phaser.Sprite.html",
         "longname": "Sprite",
+        "description" : "",
         "name": "Sprite"
       },
       {
         "memberof": "Phaser.SpriteBatch.html",
         "longname": "SpriteBatch",
+        "description" : "",
         "name": "SpriteBatch"
       },
       {
         "memberof": "Phaser.Stage.html",
         "longname": "Stage",
+        "description" : "",
         "name": "Stage"
       },
       {
         "memberof": "Phaser.State.html",
         "longname": "State",
+        "description" : "",
         "name": "State"
       },
       {
         "memberof": "Phaser.StateManager.html",
         "longname": "StateManager",
+        "description" : "",
         "name": "StateManager"
       },
       {
         "memberof": "Phaser.Text.html",
         "longname": "Text",
+        "description" : "",
         "name": "Text"
       },
       {
         "memberof": "Phaser.Tile.html",
         "longname": "Tile",
+        "description" : "",
         "name": "Tile"
       },
       {
         "memberof": "Phaser.Tilemap.html",
         "longname": "Tilemap",
+        "description" : "",
         "name": "Tilemap"
       },
       {
         "memberof": "Phaser.TilemapLayer.html",
         "longname": "TilemapLayer",
+        "description" : "",
         "name": "TilemapLayer"
       },
       {
         "memberof": "Phaser.TilemapParser.html",
         "longname": "TilemapParser",
+        "description" : "",
         "name": "TilemapParser"
       },
       {
         "memberof": "Phaser.Tileset.html",
         "longname": "Tileset",
+        "description" : "",
         "name": "Tileset"
       },
       {
         "memberof": "Phaser.TileSprite.html",
         "longname": "TileSprite",
+        "description" : "",
         "name": "TileSprite"
       },
       {
         "memberof": "Phaser.Time.html",
         "longname": "Time",
+        "description" : "",
         "name": "Time"
       },
       {
         "memberof": "Phaser.Timer.html",
         "longname": "Timer",
+        "description" : "",
         "name": "Timer"
       },
       {
         "memberof": "Phaser.TimerEvent.html",
         "longname": "TimerEvent",
+        "description" : "",
         "name": "TimerEvent"
       },
       {
         "memberof": "Phaser.Touch.html",
         "longname": "Touch",
+        "description" : "",
         "name": "Touch"
       },
       {
         "memberof": "Phaser.Tween.html",
         "longname": "Tween",
+        "description" : "",
         "name": "Tween"
       },
       {
         "memberof": "Phaser.TweenData.html",
         "longname": "TweenData",
+        "description" : "",
         "name": "TweenData"
       },
       {
         "memberof": "Phaser.TweenManager.html",
         "longname": "TweenManager",
+        "description" : "",
         "name": "TweenManager"
       },
       {
         "memberof": "Phaser.Utils.html",
         "longname": "Utils",
+        "description" : "",
         "name": "Utils"
       },
       {
         "memberof": "Phaser.Utils.Debug.html",
         "longname": "Debug",
+        "description" : "",
         "name": "Debug"
       },
       {
         "memberof": "Phaser.Video.html",
         "longname": "Video",
+        "description" : "",
         "name": "Video"
       },
       {
         "memberof": "Phaser.Weapon.html",
         "longname": "Weapon",
+        "description" : "",
         "name": "Weapon"
       },
       {
         "memberof": "Phaser.World.html",
         "longname": "World",
+        "description" : "",
         "name": "World"
       },
       {
         "memberof": "PIXI.BaseTexture.html",
         "longname": "BaseTexture",
+        "description" : "",
         "name": "BaseTexture"
       },
       {
         "memberof": "PIXI.CanvasBuffer.html",
         "longname": "CanvasBuffer",
+        "description" : "",
         "name": "CanvasBuffer"
       },
       {
         "memberof": "PIXI.CanvasGraphics.html",
         "longname": "CanvasGraphics",
+        "description" : "",
         "name": "CanvasGraphics"
       },
       {
         "memberof": "PIXI.CanvasMaskManager.html",
         "longname": "CanvasMaskManager",
+        "description" : "",
         "name": "CanvasMaskManager"
       },
       {
         "memberof": "PIXI.CanvasRenderer.html",
         "longname": "CanvasRenderer",
+        "description" : "",
         "name": "CanvasRenderer"
       },
       {
         "memberof": "PIXI.CanvasTinter.html",
         "longname": "CanvasTinter",
+        "description" : "",
         "name": "CanvasTinter"
       },
       {
         "memberof": "PIXI.ComplexPrimitiveShader.html",
         "longname": "ComplexPrimitiveShader",
+        "description" : "",
         "name": "ComplexPrimitiveShader"
       },
       {
         "memberof": "PIXI.DisplayObject.html",
         "longname": "DisplayObject",
+        "description" : "",
         "name": "DisplayObject"
       },
       {
         "memberof": "PIXI.DisplayObjectContainer.html",
         "longname": "DisplayObjectContainer",
+        "description" : "",
         "name": "DisplayObjectContainer"
       },
       {
         "memberof": "PIXI.FilterTexture.html",
         "longname": "FilterTexture",
+        "description" : "",
         "name": "FilterTexture"
       },
       {
         "memberof": "PIXI.PixiFastShader.html",
         "longname": "PixiFastShader",
+        "description" : "",
         "name": "PixiFastShader"
       },
       {
         "memberof": "PIXI.PixiShader.html",
         "longname": "PixiShader",
+        "description" : "",
         "name": "PixiShader"
       },
       {
         "memberof": "PIXI.PrimitiveShader.html",
         "longname": "PrimitiveShader",
+        "description" : "",
         "name": "PrimitiveShader"
       },
       {
         "memberof": "PIXI.Sprite.html",
         "longname": "Sprite",
+        "description" : "",
         "name": "Sprite"
       },
       {
         "memberof": "PIXI.StripShader.html",
         "longname": "StripShader",
+        "description" : "",
         "name": "StripShader"
       },
       {
         "memberof": "PIXI.Texture.html",
         "longname": "Texture",
+        "description" : "",
         "name": "Texture"
       },
       {
         "memberof": "PIXI.WebGLBlendModeManager.html",
         "longname": "WebGLBlendModeManager",
+        "description" : "",
         "name": "WebGLBlendModeManager"
       },
       {
         "memberof": "PIXI.WebGLFastSpriteBatch.html",
         "longname": "WebGLFastSpriteBatch",
+        "description" : "",
         "name": "WebGLFastSpriteBatch"
       },
       {
         "memberof": "PIXI.WebGLFilterManager.html",
         "longname": "WebGLFilterManager",
+        "description" : "",
         "name": "WebGLFilterManager"
       },
       {
         "memberof": "PIXI.WebGLRenderer.html",
         "longname": "WebGLRenderer",
+        "description" : "",
         "name": "WebGLRenderer"
       }
     ]
@@ -964,6 +1154,7 @@
     "data": [
       {
         "longname": "Global",
+        "description" : "",
         "name": "Global",
         "memberof": "global.html"
       }

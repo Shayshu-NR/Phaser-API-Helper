@@ -350,6 +350,7 @@
                     data-value-longname={resType.data[i].longname}
                     data-value-memberof={resType.data[i].memberof}
                     data-value-type={resType.type}
+                    title="{resType.data[i].description + ''}"
                     on:click={handleLinkClick}
                   >
                     {resType.data[i].name}
@@ -555,7 +556,7 @@
     background-color: transparent;
   }
 
-  a:hover {
+  :global(a:hover) {
     color: #0056b3;
     text-decoration: underline;
   }
