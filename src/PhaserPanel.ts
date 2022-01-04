@@ -113,11 +113,8 @@ export class PhaserPanel {
                     vscode.window.showErrorMessage(data.value);
                     break;
                 }
-                // case "tokens": {
-                //   await Util.globalState.update(accessTokenKey, data.accessToken);
-                //   await Util.globalState.update(refreshTokenKey, data.refreshToken);
-                //   break;
-                // }
+                default: 
+                    break;
             }
         });
     }
@@ -159,8 +156,6 @@ export class PhaserPanel {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href="${stylesResetUri}" rel="stylesheet">
                     <link href="${stylesMainUri}" rel="stylesheet">
-                    <script nonce="${nonce}">
-                    </script>
                     <script nonce="${nonce}">
                         const tsvscode = acquireVsCodeApi();
                     </script>

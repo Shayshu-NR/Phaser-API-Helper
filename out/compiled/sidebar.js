@@ -11444,7 +11444,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (225:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
+    // (245:10) {#if searchResults.length > 0 && searchVal.length > 0 && !searchValSelected}
     function create_if_block(ctx) {
     	let div;
     	let each_value = /*searchResults*/ ctx[1];
@@ -11506,11 +11506,12 @@ var app = (function () {
     	};
     }
 
-    // (235:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
+    // (255:16) {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
     function create_each_block_1(ctx) {
     	let a;
     	let t_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].name + "";
     	let t;
+    	let a_href_value;
     	let a_data_value_longname_value;
     	let a_data_value_memberof_value;
     	let a_data_value_type_value;
@@ -11522,6 +11523,7 @@ var app = (function () {
     			a = element("a");
     			t = text(t_value);
     			attr(a, "class", "dropdown-item text-white svelte-15lmnww");
+    			attr(a, "href", a_href_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname);
     			attr(a, "data-value-longname", a_data_value_longname_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname);
     			attr(a, "data-value-memberof", a_data_value_memberof_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].memberof);
     			attr(a, "data-value-type", a_data_value_type_value = /*resType*/ ctx[17].type);
@@ -11537,6 +11539,10 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			if (dirty & /*searchResults*/ 2 && t_value !== (t_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].name + "")) set_data(t, t_value);
+
+    			if (dirty & /*searchResults*/ 2 && a_href_value !== (a_href_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname)) {
+    				attr(a, "href", a_href_value);
+    			}
 
     			if (dirty & /*searchResults*/ 2 && a_data_value_longname_value !== (a_data_value_longname_value = /*resType*/ ctx[17].data[/*i*/ ctx[22]].longname)) {
     				attr(a, "data-value-longname", a_data_value_longname_value);
@@ -11558,7 +11564,7 @@ var app = (function () {
     	};
     }
 
-    // (231:14) {#each searchResults as resType}
+    // (251:14) {#each searchResults as resType}
     function create_each_block(ctx) {
     	let h6;
     	let t0_value = /*resType*/ ctx[17].type.charAt(0).toUpperCase() + /*resType*/ ctx[17].type.slice(1) + "";
@@ -11720,10 +11726,10 @@ var app = (function () {
     			attr(button, "aria-expanded", "false");
     			if (/*searchVersion*/ ctx[5] === void 0) add_render_callback(() => /*button_input_handler*/ ctx[10].call(button));
     			attr(a0, "class", "dropdown-item svelte-15lmnww");
-    			attr(a0, "href", "#");
+    			attr(a0, "href", "Phaser 3");
     			attr(li0, "class", "svelte-15lmnww");
     			attr(a1, "class", "dropdown-item svelte-15lmnww");
-    			attr(a1, "href", "#");
+    			attr(a1, "href", "Phaser CE");
     			attr(li1, "class", "svelte-15lmnww");
     			attr(ul, "class", "dropdown-menu-btn dropdown-menu-end bg-secondary svelte-15lmnww");
     			set_style(ul, "display", "none");
@@ -11869,7 +11875,7 @@ var app = (function () {
     		var dataToPush = { type: x.type, data: [] };
 
     		x.data.forEach(y => {
-    			if (y.longname.toLowerCase().match(regex) != null | y.memberof.toLowerCase().match(regex) != null) {
+    			if (y.longname.toLowerCase().match(regex) != null || y.memberof.toLowerCase().match(regex) != null) {
     				dataToPush.data.push(y);
     			}
     		});
@@ -11886,10 +11892,20 @@ var app = (function () {
 
     function instance($$self, $$props, $$invalidate) {
     	onMount(() => {
-    		//window.$ = $;
     		window.jQuery = jQuery;
-
     		window.$ = jQuery;
+
+    		window.addEventListener("message", async event => {
+    			const message = event.data;
+
+    			switch (message.type) {
+    				case "new-search":
+    					$$invalidate(0, searchVal = message.value);
+    					let e = { target: { value: searchVal } };
+    					handleInput(e);
+    					break;
+    			}
+    		});
     	});
 
     	let searchVal = "";

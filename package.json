@@ -11,7 +11,7 @@
   ],
   "activationEvents": [
     "onCommand:pah.apinfo",
-    "onCommand:pah.refresh",
+    "onCommand:pah.triggerSearch",
     "onView:phaserapi-sidebar"
   ],
   "main": "./out/extension.js",
@@ -43,24 +43,24 @@
         "title": "Get API Information"
       },
       {
-        "command": "pah.refresh",
+        "command": "pah.triggerSearch",
         "category": "Phase API",
-        "title": "Refresh Webview"
+        "title": "Search Phaser API Docs"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "pah.apinfo",
+          "command": "pah.triggerSearch",
           "when": "editorHasSelection",
-		  "group": "navigation"
+          "group": "navigation"
         }
       ]
     }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "webpack --config ./build/node-extension.webpack.config.js",
+    "compile": "tsc -p ./ webpack --config ./build/node-extension.webpack.config.js",
     "watch": "concurrently \"rollup -c -w\" \"webpack --watch --config ./build/node-extension.webpack.config.js\"",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
@@ -99,6 +99,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "@types/estree": "0.0.47",
     "bootstrap": "^5.1.3"
   }
 }

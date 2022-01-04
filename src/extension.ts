@@ -5,32 +5,27 @@ import { SidebarProvider } from "./Sidebar";
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("pah.apinfo", () => {
-		const { activeTextEditor } = vscode.window;
-
-		if (!activeTextEditor) {
-			vscode.window.showInformationMessage("No active text editor");
-			return;
-		}
-
-		const text = activeTextEditor.document.getText(
-			activeTextEditor.selection
-		);
-
-		vscode.window.showInformationMessage(text);
-
+      vscode.window.showInformationMessage("Phaser API Helper");
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("pah.refresh ", () => {
-      PhaserPanel.kill();
-      PhaserPanel.createOrShow(context.extensionUri);
+    vscode.commands.registerCommand("pah.triggerSearch", async () => {
+      const { activeTextEditor } = vscode.window;
 
-      setTimeout(() => {
-        vscode.commands.executeCommand(
-          "workbench.action.webview.openDeveloperTools"
-        );
-      }, 500);
+      if (!activeTextEditor) {
+        vscode.window.showInformationMessage("No active text editor");
+        return;
+      }
+
+      const text = activeTextEditor.document.getText(
+        activeTextEditor.selection
+      );
+
+      await vscode.commands.executeCommand("workbench.action.closeSidebar");
+      await vscode.commands.executeCommand("workbench.view.extension.phaserapi-sidebar-view");
+
+      sidebarProvider._view?.webview.postMessage({type: "new-search", value: text});
     })
   );
 

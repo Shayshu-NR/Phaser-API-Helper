@@ -34,6 +34,13 @@ export default fs
             css.write(name + ".css");
           },
           preprocess: sveltePreprocess(),
+            onwarn: (warning, handler) => {
+              const { code, frame } = warning;
+              if (code === "css-unused-selector")
+                  return;
+      
+              handler(warning);
+          },
         }),
         resolve({
           browser: true,

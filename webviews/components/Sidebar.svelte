@@ -14,9 +14,29 @@
   import phaserCEDict from "./PhaserCESearchData.json";
 
   onMount(() => {
-    //window.$ = $;
     window.jQuery = jQuery;
     window.$ = jQuery;
+
+    window.addEventListener("message", async (event) => {
+      const message = event.data;
+      switch (message.type) {
+        case "new-search":
+          searchVal = message.value;
+          let e: {
+            target: {
+              value: string;
+            };
+          } = {
+            target: {
+              value: searchVal,
+            },
+          };
+          handleInput(e);
+          break;
+        default:
+          break;
+      }
+    });
   });
 
   let searchVal = "";
@@ -68,7 +88,7 @@
   let searchVersion: string = "Phaser 3";
 
   // When searchVal changes then perform a get request to the phaser api
-  function handleInput(e) {
+  function handleInput(e: any) {
     if (e.target.value.length == 0) {
       searchValSelected = false;
       return;
@@ -106,7 +126,14 @@
   }
 
   function searchPhaserCE(srch: string, structure: any) {
-    var ret = [];
+    var ret: {
+      type: string;
+      data: {
+        memberof: string;
+        longname: string;
+        name: string;
+      }[];
+    }[] = [];
     var regex = new RegExp(srch.toLowerCase());
     structure.forEach((x) => {
       var dataToPush = {
@@ -115,8 +142,8 @@
       };
       x.data.forEach((y) => {
         if (
-          (y.longname.toLowerCase().match(regex) != null) |
-          (y.memberof.toLowerCase().match(regex) != null)
+          y.longname.toLowerCase().match(regex) != null ||
+          y.memberof.toLowerCase().match(regex) != null
         ) {
           dataToPush.data.push(y);
         }
@@ -190,16 +217,22 @@
       doc.innerHTML = val;
       let elementID: string;
 
-      switch(searchType) {
-        case "members" : 
+      switch (searchType) {
+        case "members":
           elementID = longname.split("-")[1] + ".name";
           break;
         case "constants":
         case "typedef":
-           elementID = "\\." + longname.split(".")[longname.split(".").length - 1] + ".name";
+          elementID =
+            "\\." +
+            longname.split(".")[longname.split(".").length - 1] +
+            ".name";
           break;
-        case "events" : 
-          elementID = "event\\:"  + longname.split(".")[longname.split(".").length - 1] + ".name";
+        case "events":
+          elementID =
+            "event\\:" +
+            longname.split(".")[longname.split(".").length - 1] +
+            ".name";
           break;
         default:
           elementID = "";
@@ -219,23 +252,20 @@
         case "members":
         case "constants":
           var memberHeader =
-          searchVersion == "Phaser 3"
-          ? 
-            window.jQuery
-            .default(doc)
-            .find("#" + elementID)
-            : 
-            window.jQuery.default(doc).find("#main").html();
-            searchContent =
             searchVersion == "Phaser 3"
-            ? memberHeader.html() + memberHeader.next().html()
-            : memberHeader;
-            break;
+              ? window.jQuery.default(doc).find("#" + elementID)
+              : window.jQuery.default(doc).find("#main").html();
+          searchContent =
+            searchVersion == "Phaser 3"
+              ? memberHeader.html() + memberHeader.next().html()
+              : memberHeader;
+          break;
         case "function":
         case "events":
         case "typedef":
           memberHeader = window.jQuery.default(doc).find("#" + elementID);
-          searchContent = memberHeader.parent().html() + memberHeader.parent().next().html();  
+          searchContent =
+            memberHeader.parent().html() + memberHeader.parent().next().html();
           break;
         default:
           break;
@@ -288,14 +318,16 @@
               style="display: none;"
             >
               <li>
-                <a class="dropdown-item" href="#" on:click={() => switchVersions("Phaser 3")}
-                  >Phaser 3</a
+                <a
+                  class="dropdown-item"
+                  href="Phaser 3"
+                  on:click={() => switchVersions("Phaser 3")}>Phaser 3</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item"
-                  href="#"
+                  href="Phaser CE"
                   on:click={() => switchVersions("Phaser CE")}>Phaser CE</a
                 >
               </li>
@@ -314,6 +346,7 @@
                 {#each Array(resType.data.length > 3 ? 3 : resType.data.length) as _, i}
                   <a
                     class="dropdown-item text-white"
+                    href={resType.data[i].longname}
                     data-value-longname={resType.data[i].longname}
                     data-value-memberof={resType.data[i].memberof}
                     data-value-type={resType.type}
